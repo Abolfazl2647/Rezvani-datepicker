@@ -1,9 +1,9 @@
 # rn-react-datepicker
 #### Persian And Gregorian Date Picker - ReactJs
 
-![RN-datepicker-singleDate](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/singleDate.png)
+![RN-datepicker-jalali](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/jalali.png)
 
-![RN-datepicker-rangeDate](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/rangeDate.png)
+![RN-datepicker-garegorian](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/garegorian.png)
 
 
 ### Options:
@@ -22,7 +22,7 @@ Name | Values | Description | Sample
 **startDate** | [null], {year:1397,month:10,day:02} | pre selected end date - only for range date
 **exteraClassForDays** | [''] , 'STRING' | just extrea css Class that will added to each days for desigin reasons
 **handleChange** | function (date) | a function which trigger after date and range date are selected - (date) is result of selected date
-**inputVisible** | true, [false] | result of datepicker allways stored in an input under datepicker which can be hidden or visible
+**inputVisible** | [true], false | result of datepicker allways stored in an input under datepicker which can be hidden or visible
 **shortNameOfTheMonth** | true, [false] | use short names for month's names
 **shortNameOfTheWeek** | true, [false] | use short names for days's names of week
 
