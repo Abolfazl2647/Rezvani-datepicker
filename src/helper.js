@@ -104,19 +104,20 @@ export const getPreviousMonth =  (year,month) => {
 }
 
 // this function return [31,30,29] if offset = 3 to show last days of prev month
-export const daysInOffsetPrevMonth = (offset, year, month, lang) => {
-
+export const daysInOffsetPrevMonth = (offset, year, month, lang, disable) => {
+    let prevClass = (disable) ? ' disabled ' : '  prev-days ';
     let listOfDays = [];
     let days = daysInMonth(year,month,lang);
     for (let i=0 ; i < offset ; i++) {
         listOfDays.push(days);
         days--;
     }
-    return changeArryaToArrayObj(listOfDays.reverse(), year, month , ' prev-days ');
+    return changeArryaToArrayObj(listOfDays.reverse(), year, month , prevClass );
 }
 
 // this function return [1,2,3] if offset = 3 to show last days of next month
-export const daysInOffsetNextMonth = (offset, total,year,month) => {
+export const daysInOffsetNextMonth = (offset, total,year,month, disable) => {
+    let nextClass = (disable) ? ' disabled ' : ' next-days ';
     let maxLenght = 42;
     let moved  = offset + total; // 31 for example
     let remainCount = maxLenght - moved; // 11 for expample
@@ -128,7 +129,7 @@ export const daysInOffsetNextMonth = (offset, total,year,month) => {
             remainCount--;
         }
     }
-    return changeArryaToArrayObj( list.reverse(), year, month , ' next-days ');
+    return changeArryaToArrayObj( list.reverse(), year, month , nextClass);
 }
 
 export const convertDateStringToFun = (dateObj, lang)  => {
@@ -162,10 +163,12 @@ export const isEmptyObj = (obj) => {
     return true;
 }
 
-export default function Calender(year,month,LANG) {
+export default function Calender(year,month,LANG,disable) {
 
     // console.log('calendar = ', year,month,LANG);
     
+    let defaultClass = (disable) ? ' disabled ' : 'current-days';
+
     let DAY = TODAY(LANG);    
     let TODAY_DATE = THIS_YEAR(LANG)+"-"+THIS_MONTH(LANG)+'-'+ DAY;
     
@@ -206,7 +209,8 @@ export default function Calender(year,month,LANG) {
         CURRENT_MONTH_DAYS.push(z);
     }
 
-    CURRENT_MONTH_DAYS = changeArryaToArrayObj(CURRENT_MONTH_DAYS,YEAR,MONTH , 'current-days');
+
+    CURRENT_MONTH_DAYS = changeArryaToArrayObj(CURRENT_MONTH_DAYS,YEAR,MONTH ,defaultClass );
 
     let all_days = (PREV_OFFSET.concat(CURRENT_MONTH_DAYS)).concat(NEXT_OFFSET);
 

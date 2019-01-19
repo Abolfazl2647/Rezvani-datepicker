@@ -44,7 +44,7 @@ class Datepicker extends Component {
     }
 
     handleNextMonth () {
-
+        if ( this.props.disable ) return;
         let date = Object.assign({}, this.state.currentDate); 
         let mons = date.month;
         let yer = date.year;
@@ -59,7 +59,7 @@ class Datepicker extends Component {
     }
 
     handlePrevMonth () {
-
+        if ( this.props.disable ) return;
         let date = Object.assign({}, this.state.currentDate); 
         let mons = date.month;
         let yer = date.year;
@@ -74,7 +74,8 @@ class Datepicker extends Component {
     }    
 
     handleSelectedDay (dayItem){
-        
+        if ( this.props.disable ) return;
+
         // if rangePicker Enabled
         if ( this.props.rangePicker ) {
             // range picker heres
@@ -97,7 +98,7 @@ class Datepicker extends Component {
 
     render() {
         
-        let calander_days = Calender( this.state.currentDate.year , this.state.currentDate.month , this.state.lang );
+        let calander_days = Calender( this.state.currentDate.year , this.state.currentDate.month , this.state.lang , this.props.disable );
         let value = "";
         let BODY_TYPE = null;
 
