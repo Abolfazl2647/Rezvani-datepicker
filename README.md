@@ -1,5 +1,7 @@
-# rn-react-datepicker
+# rezvani-datepicker
 #### Persian And Gregorian Date Picker - ReactJs
+
+Persian Date Picker For React Js Developers 
 
 ![RN-datepicker-jalali](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/jalali.png)
 
