@@ -6,6 +6,43 @@
 ![RN-datepicker-garegorian](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/garegorian.png)
 
 
+### Installing:
+
+***npm install rezvani-datepicker***
+
+Now add these files to you html:
+```React Component at the top
+require('rezvani-datepicker') // ES5 from npm
+import React, { Component } from 'react' // ES6;
+import Datepicker from 'rezvani-datepicker';
+```
+
+### How to use:
+```React Component in render method:
+
+<Datepicker
+    lang={this.state.lang}
+    disable={this.state.checkbox}
+    handleChange={this.exmapleHandle}
+    inputVisible={false}
+    shortNameOfTheWeek={false}
+    shortNameOfTheMonth={false}
+    disableBeforeToday={false}
+    disableAfterToday={false}
+    disableAfterDate={null}
+    disableBeforeDate={null}
+    rangePicker={true}
+    exteraClassForDays={""}
+    startDate={""}
+    endDate={""}
+/>
+
+
+```
+
+<hr>
+
+
 ### Options:
 Default values are into `[ ]`
 
