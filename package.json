@@ -1,15 +1,16 @@
 {
   "name": "rezvani-datepicker",
-  "version": "0.1.01",
-  "private": false,
-  "description": "Persian Datepicker For React Developers",
-  "main": "./src/datepicker.js",
-  "license": "MIT",
-  "author": {
-    "email": "returnAmor@Gmail.com",
-    "name": "Abolfazl Rezvani Naraqi",
-    "url": "http://abolfazlrezvani.me/"
+  "version": "0.1.011",
+  "repository": {
+    "type": "git",
+    "url": "git+hhttps://github.com/Abolfazl2647/rn-datepicker"
   },
+  "private": false,
+  "deprecated": false,
+  "description": "Persian Datepicker For React Developers",
+  "license": "MIT",
+  "repository": "",
+  "main": "./src/datepicker.js",
   "dependencies": {
     "jalali-moment": "^3.2.3",
     "node-sass": "^4.11.0",
@@ -17,14 +18,10 @@
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.3"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+  "author": {
+    "email": "returnAmor@Gmail.com",
+    "name": "Abolfazl Rezvani Naraqi",
+    "url": "http://abolfazlrezvani.me/"
   },
   "keywords": [
     "datepicker",
@@ -33,11 +30,5 @@
     "jalali datepicker",
     "react persian datepicker",
     "react datepicker"
-  ],
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
   ]
 }
