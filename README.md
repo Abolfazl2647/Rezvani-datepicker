@@ -21,10 +21,11 @@ import Datepicker from 'rezvani-datepicker';
 
 ### How to use:
 ```React Component in render method:
+notice: for now just copy all the props of <Datepicker /> with pre defined values
 
 <Datepicker
-    lang={this.state.lang}
-    disable={this.state.checkbox}
+    lang={"fa"}
+    disable={false}
     handleChange={this.exmapleHandle}
     inputVisible={false}
     shortNameOfTheWeek={false}

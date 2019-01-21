@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './index.scss';
 import Calender , 
     { CURRENT_DATE,
         zeroPad,
@@ -12,7 +11,7 @@ import Calender ,
         EN_MONTHS,
         FA_MONTHS,
         EN_WEEK_DAYS,
-        FA_WEEK_DAYS } from "./helper";
+        FA_WEEK_DAYS } from "./helper.js";
 
 // Datepicker
 class Datepicker extends Component {
