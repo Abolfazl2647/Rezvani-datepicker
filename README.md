@@ -10,9 +10,14 @@ Persian Date Picker For React Js Developers
 
 ### Installing:
 
-***npm install rezvani-datepicker***
+```
+npm install rezvani-datepicker
+yarn add rezvani-datepicker
+
+```
 
 Now add these files to you html:
+
 ```React Component at the top
 require('rezvani-datepicker') // ES5 from npm
 import React, { Component } from 'react' // ES6;
@@ -21,7 +26,7 @@ import Datepicker from 'rezvani-datepicker';
 
 ### How to use:
 ```React Component in render method:
-notice: for now just copy all the props of <Datepicker /> with pre defined values
+notice: just for now make sure all unused props have the pre defined value as below.
 
 <Datepicker
     lang={"fa"}
