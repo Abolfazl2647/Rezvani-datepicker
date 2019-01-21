@@ -1,6 +1,6 @@
 {
   "name": "rezvani-datepicker",
-  "version": "0.1.0",
+  "version": "0.1.01",
   "private": false,
   "description": "Persian Datepicker For React Developers",
   "main": "./src/datepicker.js",
@@ -26,6 +26,14 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "keywords": [
+    "datepicker",
+    "package",
+    "persian datepicker",
+    "jalali datepicker",
+    "react persian datepicker",
+    "react datepicker"
+  ],
   "browserslist": [
     ">0.2%",
     "not dead",
