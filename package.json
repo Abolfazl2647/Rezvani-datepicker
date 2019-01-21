@@ -2,7 +2,9 @@
   "name": "rezvani-datepicker",
   "version": "0.1.0",
   "private": false,
-  "main": "datepicker.js",
+  "description": "Persian Datepicker For React Developers",
+  "main": "./src/datepicker.js",
+  "license": "MIT",
   "author": {
     "email": "returnAmor@Gmail.com",
     "name": "Abolfazl Rezvani Naraqi",

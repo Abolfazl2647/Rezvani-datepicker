@@ -459,4 +459,5 @@ class RangeBody extends Component {
         );
     }
 }
+
 export default Datepicker;
