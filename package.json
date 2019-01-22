@@ -12,15 +12,6 @@
     "type": "git",
     "url": "git+https://github.com/Abolfazl2647/rn-datepicker.git"
   },
-  "keywords": [
-    "datepicker",
-    "react",
-    "persian-range-datepicker",
-    "react-datepicker",
-    "persian-datepicker",
-    "jalali-datepicker",
-    "rezvani-datepicker",
-  ],
   "author": "Abolfazl Rezvani Naraqi <returnamor@Gmail.com> (http://abolfazlrezvani.com)",
   "license": "MIT",
   "bugs": {
@@ -40,5 +31,14 @@
     "jalali-moment": "^3.2.3",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
-  }
+  },
+  "keywords": [
+    "datepicker",
+    "react",
+    "persian-range-datepicker",
+    "react-datepicker",
+    "persian-datepicker",
+    "jalali-datepicker",
+    "rezvani-datepicker"
+  ]
 }
