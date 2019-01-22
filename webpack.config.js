@@ -4,7 +4,7 @@ module.exports = {
     devtool:'source-map',
     entery:'./src/index.js',
     output: {
-        path:__dirname + '/dist',
+        path:__dirname + '/lib',
         filename:'rezvani-datepicker.js',
     },
     module: {
