@@ -161,13 +161,11 @@ export const isEmptyObj = (obj) => {
 }
 
 export default function Calender(year,month,LANG,disable) {
-
-    // console.log('calendar = ', year,month,LANG);
     
     let defaultClass = (disable) ? ' disabled ' : 'current-days';
 
-    let DAY = TODAY(LANG);    
-    let TODAY_DATE = THIS_YEAR(LANG)+"-"+THIS_MONTH(LANG)+'-'+ DAY;
+    let DAY = TODAY(LANG); 
+    let TODAY_DATE = zeroPad(THIS_YEAR(LANG) , 2)+"-"+ zeroPad(THIS_MONTH(LANG),2)+'-'+ zeroPad(DAY,2);
     
     let YEAR = null;
     let MONTH = null;

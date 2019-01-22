@@ -12,6 +12,7 @@ import Calender ,
         FA_MONTHS,
         EN_WEEK_DAYS,
         FA_WEEK_DAYS } from "./helper.js";
+import './index.css';
 
 // Datepicker
 class Datepicker extends Component {
@@ -208,10 +209,11 @@ class Body extends Component {
         let afterToday = null;
         let beforeDate = null;
         let afterDate = null;
+        let today = null;
+
         return (
             <div className={"rn-datepicker-body"}>
                 { this.props.calender.all_days.map( (item , index) => {
-                    
                     if ( i === 7) {
                         weekend = true;
                         i = 0;
@@ -220,6 +222,7 @@ class Body extends Component {
                     }
                     i++;
 
+                    today = ( item.date === this.props.calender.todayString);
                     selected = ( item.date === this.props.parentState.startDate );
 
                     if ( this.props.disableBeforeToday ) {
@@ -238,6 +241,7 @@ class Body extends Component {
                         beforeDate = this.handleDisableBeforeDate(item);
                     }
 
+
                     return (<div key={index + 'days'}
                                 onClick={ () => this.props.onSelect(item) }
                                 className={ 
@@ -246,7 +250,7 @@ class Body extends Component {
                                     ((afterToday)  ? ' disabled ' : '' ) +
                                     ((beforeToday) ? ' disabled ' : '' ) +
                                     ((selected)    ? ' selectedDay ' : '') +  
-                                    ((item.today)  ? ' today ' : '' ) + 
+                                    ((today)  ? ' today ' : '' ) + 
                                     ((weekend)     ? ' weekend ': '' ) + item.info + " rn-days "}
                                 data-date={item.date}>
                                 {item.day}
@@ -402,6 +406,7 @@ class RangeBody extends Component {
         let beforeToday = null;
         let afterDate = null;
         let beforeDate = null;
+        let today = null;
 
         return (
             <div className={"rn-datepicker-body"}>
@@ -435,7 +440,7 @@ class RangeBody extends Component {
                     startDate = this.handleStartDate(item)
                     endDate = this.handleEndDate(item);
                     hover = this.handleRangehover(item);
-
+                    today = ( item.date === this.props.calender.todayString);
                     return (<div key={index + 'days'}
                                 onClick={ () => this.onSelect(item) }
                                 onMouseEnter={ () => this.hoverDays(item) }
@@ -448,7 +453,7 @@ class RangeBody extends Component {
                                     ((hover)        ? ' range-select ' : '' ) +  
                                     ((endDate)      ? ' endDate ' : '' ) + 
                                     ((startDate)    ? ' startDate ' : '' ) +  
-                                    ((item.today)   ? ' today ' : '' ) + 
+                                    ((today)  ? ' today ' : '' ) + 
                                     ((weekend)      ? ' weekend ': '' ) + item.info + " rn-days "}
                                 data-date={item.date}>
                                 {item.day}
