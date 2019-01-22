@@ -22,16 +22,28 @@ Now add these files to you html:
 require('rezvani-datepicker') // ES5 from npm
 import React, { Component } from 'react' // ES6;
 import Datepicker from 'rezvani-datepicker';
+
+// styles
+
+import 'rezvani-datepicker/public/index.css';
+// OR
+import 'rezvani-datepicker/public/index.scss';
+
 ```
 
 ### How to use:
 ```React Component in render method:
 notice: just for now make sure all unused props have the pre defined value as below.
 
+
+exmapleHandle (selectedDate){
+
+}
+
 <Datepicker
     lang={"fa"}
     disable={false}
-    handleChange={this.exmapleHandle}
+    handleChange={this.exmapleHandle.bind(this)}
     inputVisible={false}
     shortNameOfTheWeek={false}
     shortNameOfTheMonth={false}
