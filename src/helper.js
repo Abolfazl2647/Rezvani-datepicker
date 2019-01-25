@@ -19,7 +19,6 @@ export const THIS_YEAR = (lang) => {
     let format = ( lang.toLowerCase() === 'fa' ) ? 'jYYYY' : 'YYYY' ;
     return parseInt(moment().locale(lang.toLowerCase()).format(format));
 }
-
 // (int) The current month starting from 1 - 12
 // 1 => January, 12 => December
 export const THIS_MONTH = (lang) => {
@@ -50,7 +49,6 @@ export const CURRENT_DATE = (LANG) => {
 export const convertObjectDateToString = (dateString) => {
     return dateString.year +'-'+ zeroPad(dateString.month , 2) +'-'+ zeroPad(dateString.day , 2)
 }
-
 // Pads a string value with leading zeroes(0) until length is reached
 // For example: zeroPad(5, 2) => "05"
 export const zeroPad = (value, length) => {
@@ -101,20 +99,20 @@ export const getPreviousMonth =  (year,month) => {
 }
 
 // this function return [31,30,29] if offset = 3 to show last days of prev month
-export const daysInOffsetPrevMonth = (offset, year, month, lang, disable) => {
-    let prevClass = (disable) ? ' disabled ' : '  prev-days ';
+export const daysInOffsetPrevMonth = (offset, year, month, lang, props) => {
     let listOfDays = [];
     let days = daysInMonth(year,month,lang);
     for (let i=0 ; i < offset ; i++) {
-        listOfDays.push(days);
+        listOfDays.push(zeroPad(days,2));
         days--;
     }
-    return changeArryaToArrayObj(listOfDays.reverse(), year, month , prevClass );
+    
+    return changeArryaToArrayObj(listOfDays.reverse(), year, month, props ,'PREV');
 }
 
 // this function return [1,2,3] if offset = 3 to show last days of next month
-export const daysInOffsetNextMonth = (offset, total,year,month, disable) => {
-    let nextClass = (disable) ? ' disabled ' : ' next-days ';
+export const daysInOffsetNextMonth = (offset, total,year,month, props) => {
+
     let maxLenght = 42;
     let moved  = offset + total; // 31 for example
     let remainCount = maxLenght - moved; // 11 for expample
@@ -122,11 +120,12 @@ export const daysInOffsetNextMonth = (offset, total,year,month, disable) => {
 
     for ( let i = 0 ; i <= maxLenght ; i++ ) {
         if ( i > moved ) {
-            list.push(remainCount);
+            list.push(zeroPad(remainCount,2));
             remainCount--;
         }
     }
-    return changeArryaToArrayObj( list.reverse(), year, month , nextClass);
+    
+    return changeArryaToArrayObj(list.reverse(), year, month, props , 'NEXT');
 }
 
 export const convertDateStringToFun = (dateObj, lang)  => {
@@ -160,10 +159,9 @@ export const isEmptyObj = (obj) => {
     return true;
 }
 
-export default function Calender(year,month,LANG,disable) {
+export default function Calender(year, month, PROPS) {
     
-    let defaultClass = (disable) ? ' disabled ' : 'current-days';
-
+    let LANG = PROPS.lang;
     let DAY = TODAY(LANG); 
     let TODAY_DATE = zeroPad(THIS_YEAR(LANG) , 2)+"-"+ zeroPad(THIS_MONTH(LANG),2)+'-'+ zeroPad(DAY,2);
     
@@ -184,7 +182,6 @@ export default function Calender(year,month,LANG,disable) {
         MONTH = parseInt(month);
     }
 
-
     let Prev_data = getPreviousMonth(YEAR,MONTH,LANG);
         PREV_MONTH = Prev_data.month;
         PREV_YEAR = Prev_data.year;
@@ -196,49 +193,126 @@ export default function Calender(year,month,LANG,disable) {
     let FIRST_DAY_WEEK = getMonthFirstDay(YEAR,MONTH,LANG);
     let TOTAL_DAYS_IN_MONTH = daysInMonth(YEAR,MONTH,LANG);
 
-    let PREV_OFFSET = daysInOffsetPrevMonth(FIRST_DAY_WEEK, PREV_YEAR,PREV_MONTH,LANG);
-    let NEXT_OFFSET = daysInOffsetNextMonth(FIRST_DAY_WEEK,TOTAL_DAYS_IN_MONTH,NEXT_YEAR,NEXT_MONTH);
-
     let CURRENT_MONTH_DAYS = [];
     for ( let z=1; z <= TOTAL_DAYS_IN_MONTH ; z++ ) {
-        CURRENT_MONTH_DAYS.push(z);
+        CURRENT_MONTH_DAYS.push(zeroPad(z,2));
     }
 
+    // create entire daypicker
+    let PREV_OFFSET = daysInOffsetPrevMonth(
+                            FIRST_DAY_WEEK, 
+                            PREV_YEAR , 
+                            PREV_MONTH ,
+                            LANG, 
+                            PROPS);
 
-    CURRENT_MONTH_DAYS = changeArryaToArrayObj(CURRENT_MONTH_DAYS,YEAR,MONTH ,defaultClass );
 
-    let all_days = (PREV_OFFSET.concat(CURRENT_MONTH_DAYS)).concat(NEXT_OFFSET);
 
-    for ( let c=0; c < all_days.length ; c++ ) {
-        
-       if (all_days[c].date === TODAY_DATE) {
-           all_days[c].today = true;
-       };
+    let THIS_MONTH_DAYS = changeArryaToArrayObj(
+                            CURRENT_MONTH_DAYS , 
+                            YEAR , 
+                            MONTH ,
+                            PROPS ,
+                            'CURRENT');
 
-    }
+    let NEXT_OFFSET = daysInOffsetNextMonth(
+        FIRST_DAY_WEEK, 
+        TOTAL_DAYS_IN_MONTH, 
+        NEXT_YEAR, 
+        NEXT_MONTH , 
+        PROPS);
 
     return {
-        all_days: all_days,
-        todayString:TODAY_DATE,
-        currentYear: YEAR,
+        all_days:   PREV_OFFSET.concat(THIS_MONTH_DAYS.concat(NEXT_OFFSET)),
+        todayString:  TODAY_DATE,
+        currentYear:  YEAR,
         currentMonth: MONTH,
-        currentDay: DAY,
-        dayOfTheWeek: FIRST_DAY_WEEK,
+        currentDay:   DAY,
     };
 }
 
-const changeArryaToArrayObj = (array,year, month, extera_text) => {
+const changeArryaToArrayObj = (array, year, month, props , FLAG) => {
+
+    // console.log(FLAG , array, year, month, props )
     let obj = {};
     let finalArray = [];
+    let dateString = null;
+
+    let TODAY_DATE  = zeroPad(THIS_YEAR(props.lang) , 2)+"-"+ zeroPad(THIS_MONTH(props.lang),2)+'-'+ zeroPad(TODAY(props.lang),2);
+   
+    let beforeToday = false;
+    let afterToday = false;
+    let beforeDate = false;
+    let afterDate = false;
+    let istoday = false;
+
+
     for ( let a=0; a < array.length ;a++ ){
+
+        let isDisable = false;
+        let classInfo = FLAG;
+        
+        dateString = year +"-" + month +"-"+ array[a];
+
+        istoday = handleToday( dateString, TODAY_DATE);
+        
+        if (  !props.disable ) {
+            if ( props.disableBeforeToday ) {
+                beforeToday = handleDisableBeforeToday(dateString, TODAY_DATE);
+            }
+        
+            if ( props.disableAfterToday ) {
+                afterToday = handleDisableAfterToday(dateString, TODAY_DATE);
+            }
+        
+            if ( props.disableAfterDate ) {
+                afterDate = handleDisableAfterDate(dateString, props.disableAfterDate);
+            }
+        
+            if ( props.disableBeforeDate ) {
+                beforeDate = handleDisableBeforeDate(dateString, props.disableBeforeDate);
+            }
+
+            isDisable = (beforeToday || afterToday || afterDate || beforeDate);
+        } else {
+            isDisable = props.disable;
+        }
+
+        if ( isDisable ) {
+            classInfo = FLAG + ' DISABLE ';   
+        }
+        
+
         obj = {};
-        obj.info = extera_text;
+        obj.info = classInfo;
         obj.year = year;
         obj.month = month;
+        obj.isDisable = isDisable;
+        obj.isToday = istoday;
         obj.day = array[a];
         obj.date = year + "-" + month + "-" + zeroPad(array[a] , 2);
         finalArray.push(obj); 
     }
 
     return finalArray;
+}
+
+const handleDisableBeforeToday =  (DATESTRING, TODAY , a,b) => {
+    return (DATESTRING < TODAY);
+}
+
+const handleDisableAfterToday = (DATESTRING, TODAY) => {
+    return (DATESTRING > TODAY);
+}
+
+const handleDisableAfterDate =  (DATESTRING, date) => {
+    return ( DATESTRING > convertObjectDateToString(date) );
+}
+
+const handleDisableBeforeDate =  (DATESTRING,date) => {
+    return ( DATESTRING < convertObjectDateToString(date) );
+}
+
+const handleToday = (DATESTRING,TODAY) => {
+    return ( DATESTRING === TODAY);
 }

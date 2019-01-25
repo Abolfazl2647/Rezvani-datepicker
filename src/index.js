@@ -12,7 +12,6 @@ import Calender ,
         FA_MONTHS,
         EN_WEEK_DAYS,
         FA_WEEK_DAYS } from "./helper.js";
-import './index.css';
 
 // Datepicker
 class Datepicker extends Component {
@@ -28,6 +27,7 @@ class Datepicker extends Component {
             lang: this.props.lang,
             startDate: "",
             endDate: "",
+            inputValue:"",
             currentDate: CURRENT_DATE(this.props.lang)
         }
 
@@ -82,15 +82,20 @@ class Datepicker extends Component {
             let date = dayItem.split(',');
             let start = date[0];
             let end = date[1];
-            this.setState({ startDate: start, endDate:end } , () => {
+            this.setState({ startDate: start, endDate: end , inputValue: (start+ " " + end) } , () => {
                 let val = this.state.startDate + " " + this.state.endDate;
-                this.props.handleChange(val);
+                if ( this.props.handleChange ) {
+                    this.props.handleChange(val);
+                }
             });
 
         } else {
-            if ( dayItem.info !== "current-days" ) return;
-            this.setState({startDate:dayItem.date} , () => {
-                this.props.handleChange(this.state.startDate);
+            
+            if ( dayItem.isDisable ) return;
+            this.setState({startDate:dayItem.date , inputValue: dayItem.date} , () => {
+                if (this.props.handleChange) {
+                    this.props.handleChange(this.state.startDate);
+                }
             });
         }
 
@@ -98,18 +103,18 @@ class Datepicker extends Component {
 
     render() {
         
-        let calander_days = Calender( this.state.currentDate.year , this.state.currentDate.month , this.state.lang , this.props.disable );
-        let value = "";
+        let calander_days = Calender( this.state.currentDate.year , this.state.currentDate.month , this.props );
+        // let value = "";
         let BODY_TYPE = null;
 
         // is not ragePicker
         if ( !this.props.rangePicker ) {
-            value = this.state.startDate;
+            // value = this.state.startDate;
             BODY_TYPE = <Body {...this.props} parentState={this.state} 
                                 calender={calander_days}  onSelect={this.handleSelectedDay}/>
         } else {
             // rage picker here
-            value = this.state.startDate + " " + this.state.endDate;
+            // value = this.state.startDate + " " + this.state.endDate;
             BODY_TYPE = <RangeBody {...this.props} parentState={this.state} 
                                 calender={calander_days}  updateRange={this.handleSelectedDay}/>
         }
@@ -120,7 +125,7 @@ class Datepicker extends Component {
                     <Header {...this.props} parentState={this.state} lang={this.state.lang} nextMonth={this.handleNextMonth} prevMonth={this.handlePrevMonth} />
                     {BODY_TYPE}
                     <div className="rn-datepicker-footer">
-                        <input className={ ((this.props.inputVisible) ? ' show ' : ' hide ') +  " rn-input"} defaultValue={value} />
+                        <input className={ ((this.props.inputVisible) ? ' show ' : ' hide ') +  " rn-input"} defaultValue={this.state.inputValue} />
                     </div>
                 </div>
             </div>
@@ -175,41 +180,22 @@ class Header extends Component {
 // not range picker
 class Body extends Component {
 
-    constructor(){
-        super();
-
-        this.handleDisableBeforeToday = this.handleDisableBeforeToday.bind(this);
-        this.handleDisableAfterToday = this.handleDisableAfterToday.bind(this);
-        this.handleDisableAfterDate = this.handleDisableAfterDate.bind(this);
-        this.handleDisableBeforeDate = this.handleDisableBeforeDate.bind(this);
+    constructor(props){
+        super(props);
+        this.onSelect = this.onSelect.bind(this);
     }
 
-    handleDisableBeforeToday (item) {
-        return (item.date < this.props.calender.todayString);
-    }
-
-    handleDisableAfterToday(item) {
-        return (item.date > this.props.calender.todayString);
-    }
-
-    handleDisableAfterDate (item) {
-        return ( item.date > convertObjectDateToString(this.props.disableAfterDate) );
-    }
-
-    handleDisableBeforeDate (item) {
-        return ( item.date < convertObjectDateToString(this.props.disableBeforeDate) );
+    onSelect (item , disableProps) {
+        if (disableProps) return;
+        this.props.onSelect(item);
     }
 
     render() { 
         
         let i = 1;
-        let weekend = null;
-        let selected = null;
-        let beforeToday = null;
-        let afterToday = null;
-        let beforeDate = null;
-        let afterDate = null;
-        let today = null;
+        let weekend = false;
+        let selected = false;
+        let disableProps = false;
 
         return (
             <div className={"rn-datepicker-body"}>
@@ -221,36 +207,13 @@ class Body extends Component {
                         weekend = false;
                     }
                     i++;
-
-                    today = ( item.date === this.props.calender.todayString);
                     selected = ( item.date === this.props.parentState.startDate );
 
-                    if ( this.props.disableBeforeToday ) {
-                        beforeToday = this.handleDisableBeforeToday(item);
-                    }
-
-                    if ( this.props.disableAfterToday ) {
-                        afterToday = this.handleDisableAfterToday(item);
-                    }
-
-                    if ( this.props.disableAfterDate ) {
-                        afterDate = this.handleDisableAfterDate(item);
-                    }
-
-                    if ( this.props.disableBeforeDate ) {
-                        beforeDate = this.handleDisableBeforeDate(item);
-                    }
-
-
                     return (<div key={index + 'days'}
-                                onClick={ () => this.props.onSelect(item) }
+                                onClick={ () => this.onSelect(item , disableProps) }
                                 className={ 
-                                    ((beforeDate)  ? ' disabled ' : '') + 
-                                    ((afterDate)   ? ' disabled ' : '' ) +
-                                    ((afterToday)  ? ' disabled ' : '' ) +
-                                    ((beforeToday) ? ' disabled ' : '' ) +
                                     ((selected)    ? ' selectedDay ' : '') +  
-                                    ((today)  ? ' today ' : '' ) + 
+                                    ((item.isToday)  ? ' today ' : '' ) + 
                                     ((weekend)     ? ' weekend ': '' ) + item.info + " rn-days "}
                                 data-date={item.date}>
                                 {item.day}
@@ -270,11 +233,8 @@ class RangeBody extends Component {
         this.hoverDays = this.hoverDays.bind(this);
         this.onSelect = this.onSelect.bind(this);
         this.handleRangehover = this.handleRangehover.bind(this);
-        this.handleEndDate = this.handleEndDate.bind(this);
-        this.handleStartDate = this.handleStartDate.bind(this);
-        this.handleDisableBeforeToday = this.handleDisableBeforeToday.bind(this);
-        this.handleDisableAfterDate = this.handleDisableAfterDate.bind(this);
-        this.handleDisableBeforeDate = this.handleDisableBeforeDate.bind(this);
+        this.checkEndDate = this.checkEndDate.bind(this);
+        this.checkStartDate = this.checkStartDate.bind(this);
 
         this.state = {
             firstclick: true,
@@ -298,8 +258,9 @@ class RangeBody extends Component {
         }
     }
 
-    onSelect(dayItem) {
-        if ( dayItem.info !== "current-days" ) return;
+    onSelect(dayItem , disableProps) {
+        if (dayItem.isDisable) return;
+        if (disableProps) return;
 
         // first time click on date
         if ( this.state.firstclick ) {
@@ -351,7 +312,7 @@ class RangeBody extends Component {
 
     hoverDays(dayItem) {
         
-        if ( dayItem.info !== "current-days" && this.state.rangeActive) return;
+        if ( dayItem.isDisable && this.state.rangeActive) return;
         if (this.state.endDate === null) {
             this.setState({
                 hoverDate: dayItem.date
@@ -363,8 +324,10 @@ class RangeBody extends Component {
     handleRangehover (item) {
         if ( this.state.rangeActive ) {
             if ( this.state.startDate < item.date ) {
+                // forward
                 return (item.date < this.state.hoverDate);
             } else {
+                // backward
                 return (item.date > this.state.hoverDate);
             }
         } else {
@@ -372,28 +335,12 @@ class RangeBody extends Component {
         }
     }
 
-    handleStartDate(item) {
+    checkStartDate(item) {
         return ( item.date === this.state.startDate );
     }
 
-    handleEndDate(item) {
+    checkEndDate(item) {
         return ( item.date === this.state.endDate );
-    }
-
-    handleDisableBeforeToday (item) {
-        return (item.date < this.props.calender.todayString)
-    }
-
-    handleDisableAfterToday(item) {
-        return (item.date > this.props.calender.todayString)
-    }
-    
-    handleDisableAfterDate (item) {
-        return ( item.date > convertObjectDateToString(this.props.disableAfterDate) );
-    }
-
-    handleDisableBeforeDate (item) {
-        return ( item.date < convertObjectDateToString(this.props.disableBeforeDate) );
     }
 
     render() { 
@@ -402,11 +349,7 @@ class RangeBody extends Component {
         let startDate = null;
         let endDate = null;
         let hover =  null;
-        let afterToday = null;
-        let beforeToday = null;
-        let afterDate = null;
-        let beforeDate = null;
-        let today = null;
+        let disableProps = false;
 
         return (
             <div className={"rn-datepicker-body"}>
@@ -419,41 +362,19 @@ class RangeBody extends Component {
                         weekend = false;
                     }
                     i++;
-
-                    if ( this.props.disableBeforeToday ) {
-                        beforeToday = this.handleDisableBeforeToday(item);
-                    }
-
-                    if ( this.props.disableAfterToday ) {
-                        afterToday = this.handleDisableAfterToday(item);
-                    }
-
-
-                    if ( this.props.disableAfterDate ) {
-                        afterDate = this.handleDisableAfterDate(item);
-                    }
-
-                    if ( this.props.disableBeforeDate ) {
-                        beforeDate = this.handleDisableBeforeDate(item);
-                    }
-
-                    startDate = this.handleStartDate(item)
-                    endDate = this.handleEndDate(item);
+                    startDate = this.checkStartDate(item)
+                    endDate = this.checkEndDate(item);
                     hover = this.handleRangehover(item);
-                    today = ( item.date === this.props.calender.todayString);
+
                     return (<div key={index + 'days'}
-                                onClick={ () => this.onSelect(item) }
+                                onClick={ () => this.onSelect(item, disableProps) }
                                 onMouseEnter={ () => this.hoverDays(item) }
                                 className={ 
                                     this.props.exteraClassForDays + " " + 
-                                    ((beforeDate)   ? ' disabled ' : '') + 
-                                    ((afterDate)    ? ' disabled ' : '' ) +
-                                    ((afterToday)   ? ' disabled ' : '' ) +
-                                    ((beforeToday)  ? ' disabled ' : '' ) + 
                                     ((hover)        ? ' range-select ' : '' ) +  
                                     ((endDate)      ? ' endDate ' : '' ) + 
                                     ((startDate)    ? ' startDate ' : '' ) +  
-                                    ((today)  ? ' today ' : '' ) + 
+                                    ((item.isToday)  ? ' today ' : '' ) + 
                                     ((weekend)      ? ' weekend ': '' ) + item.info + " rn-days "}
                                 data-date={item.date}>
                                 {item.day}
