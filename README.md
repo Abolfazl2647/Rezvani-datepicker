@@ -1,7 +1,7 @@
 # rezvani-datepicker
 #### Persian And Gregorian Date Picker - ReactJs
 
-Persian Date Picker For React Js Developers 
+Finaly - Persian Date Picker For React Js Developers 
 
 ![RN-datepicker-jalali](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/jalali.png)
 
@@ -26,36 +26,52 @@ import Datepicker from 'rezvani-datepicker';
 // styles
 
 import 'rezvani-datepicker/public/index.css';
-// OR
+// OR SASS
 import 'rezvani-datepicker/public/index.scss';
 
 ```
 
 ### How to use:
 ```React Component in render method:
-notice: just for now make sure all unused props have the pre defined value as below.
 
+import React, { Component } from 'react';
+import Datepicker from 'rezvani-datepicker';
+import 'rezvani-datepicker/public/index.css';
 
-exmapleHandle (selectedDate){
+class App extends Component {
 
+  exmapleHandle (selectedDate){
+    console.log(selectedDate);
+  }
+
+  render() {
+    return (
+      <div className="App">  
+
+        <Datepicker
+              lang={"fa"}
+              disable={false}
+              handleChange={this.exmapleHandle.bind(this)}
+              inputVisible={true}
+              shortNameOfTheWeek={false}
+              shortNameOfTheMonth={false}
+              disableBeforeToday={false}
+              disableAfterToday={false}
+              disableAfterDate={null}
+              disableBeforeDate={null}
+              rangePicker={false}
+              exteraClassForDays={""}
+              startDate={""}
+              endDate={""}
+          /> 
+
+      </div>
+    );
+  }
 }
 
-<Datepicker
-    lang={"fa"}
-    disable={false}
-    handleChange={this.exmapleHandle.bind(this)}
-    inputVisible={false}
-    shortNameOfTheWeek={false}
-    shortNameOfTheMonth={false}
-    disableBeforeToday={false}
-    disableAfterToday={false}
-    disableAfterDate={null}
-    disableBeforeDate={null}
-    rangePicker={true}
-    exteraClassForDays={""}
-    startDate={""}
-    endDate={""}
-/>
+export default App;
+
 
 
 ```
