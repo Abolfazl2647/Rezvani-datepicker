@@ -137,9 +137,14 @@ $padding:30px;
                     }
                 }
 
-                &.prev-days , 
-                &.next-days ,
-                &.disabled {
+                &.PREV,&.NEXT {
+                    color: #dedede;
+                    &.weekend {
+                        color: #FFDAD7;
+                    }
+                }
+
+                &.DISABLE {
                     color: $rockBlue;
                     &.weekend {
                         color: $Carnation_tint3;
@@ -154,8 +159,16 @@ $padding:30px;
 
                     box-shadow: 0;
                     border-radius: 0;
-                    background-color: $Dodger_Blue !important;
-                    color: #fff !important;
+                    background-color: $Dodger_Blue ;
+                    color: #fff ;
+
+                    &.startDate {
+                        color: $Dodger_Blue !important;
+                        border: 2px solid $Dodger_Blue !important;
+                        box-sizing: border-box !important;
+                        background-color: #fff;
+                        border-radius: $radius 0 0 $radius !important;
+                    }
                 }
 
                 &.selectedDay,&.startDate ,&.endDate {
