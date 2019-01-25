@@ -2,6 +2,8 @@
 #### Persian And Gregorian Date Picker - ReactJs
 
 Finaly - Persian Date Picker For React Js Developers 
+it is a Calender for now.
+but Datepicker and new features will be available soon
 
 ![RN-datepicker-jalali](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/jalali.png)
 
