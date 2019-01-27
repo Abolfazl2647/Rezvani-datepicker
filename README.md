@@ -1,7 +1,7 @@
 # rezvani-datepicker
 #### Persian And Gregorian Date Picker - ReactJs
-[![npm](https://img.shields.io/npm/v/rrezvani-datepicker.svg)](https://www.npmjs.com/package/rezvani-datepicker)
 [![npm](https://img.shields.io/npm/dt/rezvani-datepicker.svg)](https://www.npmjs.com/package/rezvani-datepicker)
+(https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 Finaly - Persian Calender For React Js Developers.
 Datepicker and new features will be available soon
