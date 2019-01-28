@@ -7,7 +7,6 @@ Finaly - Persian Calender For React Js Developers.
 Datepicker and new features will be available soon
 
 ![RN-datepicker-jalali](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/jalali.png)
-
 ![RN-datepicker-garegorian](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/garegorian.png)
 
 
