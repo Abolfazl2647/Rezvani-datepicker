@@ -6,14 +6,21 @@
 Finaly - Persian Calender For React Js Developers.
 Datepicker and new features will be available soon
 
-![RN-datepicker-jalali](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/jalali.png)
-![RN-datepicker-garegorian](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/garegorian.png)
+
+### Datepicker:
+![RN-datepicker-datepicker-range](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/datepicker-range.png)
+
+### Calendar:
+![RN-datepicker-calendar](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/calendar.png)
+![RN-datepicker-rangeCalendar](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/calendar-range.png)
+
 
 
 ### Installing:
 
 ```
 npm install rezvani-datepicker
+
 yarn add rezvani-datepicker
 
 ```
@@ -21,15 +28,16 @@ yarn add rezvani-datepicker
 Now add these files to you html:
 
 ```React Component at the top
-require('rezvani-datepicker') // ES5 from npm
-import React, { Component } from 'react' // ES6;
-import Datepicker from 'rezvani-datepicker';
 
-// styles
+require('rezvani-datepicker') // ES5 from npm
+
+import React, { Component } from 'react' // ES6;
+import { Calendar , Datepicker } from 'rezvani-datepicker';
 
 // CSS (minifyed)
 import 'rezvani-datepicker/public/datepicker.css';
 import 'rezvani-datepicker/public/calendar.css';
+
 // SASS (scss)
 import 'rezvani-datepicker/public/datepicker.scss';
 import 'rezvani-datepicker/public/calendar.scss';
@@ -101,9 +109,7 @@ class App extends Component {
 export default App;
 
 
-
 ```
-
 <hr>
 
 
@@ -121,10 +127,11 @@ Name | Values | Description | Sample
 **rangePicker** | [false], true | Change Datepicker Environment to Range Picker
 **endDate** | [null], {year:1397,month:10,day:02} | pre selected start date - for single date and range date
 **startDate** | [null], {year:1397,month:10,day:02} | pre selected end date - only for range date
-**exteraClassForDays** | [''] , 'STRING' | just extrea css Class that will added to each days for desigin reasons
+**exteraClassForDays** | [''] , 'STRING' | just extrea css Class that will `added` to each days
+**exteraClassForInput** | [''] , 'STRING' | just extrea css Class that will `replace` with input class
 **handleChange** | function (date) | a function which trigger after date and range date are selected - (date) is result of selected date
 **inputVisible** | [true], false | result of datepicker allways stored in an input under datepicker which can be hidden or visible
 **shortNameOfTheMonth** | true, [false] | use short names for month's names
-**shortNameOfTheWeek** | true, [false] | use short names for days's names of week
-
+**customClassIconRightBtn** | "mdi mdi-chevron-right", [STRING] | if its false or empty ">" will be replaced
+**customClassIconLeftBtn** | "mdi mdi-chevron-left", [STRING] | if its false or empty "<" will be replaced
 <hr>
