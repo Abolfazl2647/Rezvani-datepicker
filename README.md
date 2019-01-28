@@ -27,9 +27,12 @@ import Datepicker from 'rezvani-datepicker';
 
 // styles
 
-import 'rezvani-datepicker/public/index.css';
-// OR SASS
-import 'rezvani-datepicker/public/index.scss';
+// CSS (minifyed)
+import 'rezvani-datepicker/public/datepicker.css';
+import 'rezvani-datepicker/public/calendar.css';
+// SASS (scss)
+import 'rezvani-datepicker/public/datepicker.scss';
+import 'rezvani-datepicker/public/calendar.scss';
 
 ```
 
@@ -37,8 +40,9 @@ import 'rezvani-datepicker/public/index.scss';
 ```React Component in render method:
 
 import React, { Component } from 'react';
-import Datepicker from 'rezvani-datepicker';
-import 'rezvani-datepicker/public/index.css';
+import { Calendar , Datepicker } from 'rezvani-datepicker';
+import 'rezvani-datepicker/public/datepicker.scss';
+import 'rezvani-datepicker/public/calendar.scss';
 
 class App extends Component {
 
@@ -50,18 +54,40 @@ class App extends Component {
     return (
       <div className="App">  
 
+       <Calendar
+                lang={"fa"}
+                disable={false}
+                // handleChange={this.exmapleHandle.bind(this)}
+                inputVisible={true}
+                shortNameOfTheWeek={false}
+                shortNameOfTheMonth={false}
+                disableBeforeToday={false}
+                disableAfterToday={false}
+                disableAfterDate={null}
+                disableBeforeDate={null}
+                rangePicker={true}
+                customClassIconRightBtn={"mdi mdi-chevron-right"}
+                customClassIconLeftBtn={"mdi mdi-chevron-left"}
+                exteraClassForDays={""}
+                startDate={""}
+                endDate={""}
+            />
+
         <Datepicker
               lang={"fa"}
               disable={false}
-              handleChange={this.exmapleHandle.bind(this)}
+              // handleChange={this.exmapleHandle.bind(this)}
               inputVisible={true}
-              shortNameOfTheWeek={false}
+              shortNameOfTheWeek={true}
               shortNameOfTheMonth={false}
-              disableBeforeToday={false}
+              disableBeforeToday={true}
               disableAfterToday={false}
               disableAfterDate={null}
               disableBeforeDate={null}
               rangePicker={false}
+              customClassIconRightBtn={"mdi mdi-chevron-right"}
+              customClassIconLeftBtn={"mdi mdi-chevron-left"}
+              exteraClassForInput={""}
               exteraClassForDays={""}
               startDate={""}
               endDate={""}
