@@ -134,4 +134,4 @@ Name | Values | Description | Sample
 **shortNameOfTheMonth** | true, [false] | use short names for month's names
 **customClassIconRightBtn** | "mdi mdi-chevron-right", [STRING] | if its false or empty ">" will be replaced
 **customClassIconLeftBtn** | "mdi mdi-chevron-left", [STRING] | if its false or empty "<" will be replaced
-<hr>
+
