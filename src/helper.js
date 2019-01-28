@@ -252,11 +252,12 @@ const changeArryaToArrayObj = (array, year, month, props , FLAG) => {
         let isDisable = false;
         let classInfo = FLAG;
         
-        dateString = year +"-" + month +"-"+ array[a];
+        dateString = zeroPad(year , 2) + "-" + zeroPad(month , 2) + "-" + zeroPad(array[a] , 2);
 
         istoday = handleToday( dateString, TODAY_DATE);
         
         if (  !props.disable ) {
+
             if ( props.disableBeforeToday ) {
                 beforeToday = handleDisableBeforeToday(dateString, TODAY_DATE);
             }
@@ -290,7 +291,7 @@ const changeArryaToArrayObj = (array, year, month, props , FLAG) => {
         obj.isDisable = isDisable;
         obj.isToday = istoday;
         obj.day = array[a];
-        obj.date = year + "-" + month + "-" + zeroPad(array[a] , 2);
+        obj.date = zeroPad(year , 2) + "-" + zeroPad(month , 2) + "-" + zeroPad(array[a] , 2);
         finalArray.push(obj); 
     }
 
@@ -298,6 +299,8 @@ const changeArryaToArrayObj = (array, year, month, props , FLAG) => {
 }
 
 const handleDisableBeforeToday =  (DATESTRING, TODAY , a,b) => {
+    console.log((DATESTRING +"----"+ TODAY))
+    console.log((DATESTRING < TODAY));
     return (DATESTRING < TODAY);
 }
 

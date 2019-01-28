@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Calender , 
+import Core , 
     { CURRENT_DATE,
         zeroPad,
         isEmptyObj,
@@ -14,7 +14,7 @@ import Calender ,
         FA_WEEK_DAYS } from "./helper.js";
 
 // Datepicker
-class Datepicker extends Component {
+class Calendar extends Component {
 
     constructor(props){
         super(props);
@@ -103,7 +103,7 @@ class Datepicker extends Component {
 
     render() {
         
-        let calander_days = Calender( this.state.currentDate.year , this.state.currentDate.month , this.props );
+        let calander_days = Core( this.state.currentDate.year , this.state.currentDate.month , this.props );
         // let value = "";
         let BODY_TYPE = null;
 
@@ -120,18 +120,161 @@ class Datepicker extends Component {
         }
 
         return (
-            <div className="wrapper-rn-datepicker">
-                <div className="rn-datepicker">
+            <div className="rn-calendar-wrapper">
+                <div className="rn-calendar">
                     <Header {...this.props} parentState={this.state} lang={this.state.lang} nextMonth={this.handleNextMonth} prevMonth={this.handlePrevMonth} />
                     {BODY_TYPE}
                     <div className="rn-datepicker-footer">
-                        <input className={ ((this.props.inputVisible) ? ' show ' : ' hide ') +  " rn-input"} defaultValue={this.state.inputValue} />
+                        <input className={ ((this.props.inputVisible) ? ' show ' : ' hide ') +  " rn-datepicker-input"} defaultValue={this.state.inputValue} />
                     </div>
                 </div>
             </div>
         );
     }
 }
+
+
+class Datepicker extends Component {
+
+    constructor(props){
+        super(props);
+
+        this.handleNextMonth = this.handleNextMonth.bind(this);
+        this.handlePrevMonth = this.handlePrevMonth.bind(this);
+        this.handleSelectedDay = this.handleSelectedDay.bind(this);
+        this.timeForDatepicker = this.timeForDatepicker.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+
+        this.refrence = React.createRef();
+
+        this.state = {
+            visibility:false,
+            lang: this.props.lang,
+            startDate: "",
+            endDate: "",
+            inputValue:"",
+            currentDate: CURRENT_DATE(this.props.lang)
+        }
+
+        // set values for START date
+        if ( !isEmptyObj(this.props.startDate) ) {
+            this.state.startDate = convertObjectDateToString(this.props.startDate);
+        }
+
+        // set values for END date
+        if ( !isEmptyObj(this.props.endDate) ) {
+            this.state.endDate = convertObjectDateToString(this.props.endDate);
+        }
+    }
+
+    componentDidMount ()    { document.addEventListener('mousedown', this.handleClickOutside,false); }
+
+    componentWillUnmount()  { document.removeEventListener('mousedown', this.handleClickOutside,false); }
+
+    handleClickOutside (e)  {
+        if ( this.refrence && !this.refrence.current.contains(e.target) )
+            this.setState({visibility:false});
+    }
+
+    handleNextMonth () {
+        if ( this.props.disable ) return;
+        let date = Object.assign({}, this.state.currentDate); 
+        let mons = date.month;
+        let yer = date.year;
+            mons++;
+            if(mons > 12) {
+                mons = 1;
+                yer++;
+            }
+        date.month = mons;
+        date.year = yer;
+        this.setState({currentDate:date});
+    }
+
+    handlePrevMonth () {
+        if ( this.props.disable ) return;
+        let date = Object.assign({}, this.state.currentDate); 
+        let mons = date.month;
+        let yer = date.year;
+            mons--;
+            if ( mons < 1 ) {
+                mons = 12;
+                yer--;
+            }
+        date.month = mons;
+        date.year = yer;
+        this.setState({currentDate:date});
+    }    
+
+    handleSelectedDay (dayItem){
+        if ( this.props.disable ) return;
+
+        // if rangePicker Enabled
+        if ( this.props.rangePicker ) {
+            // range picker heres
+            let date = dayItem.split(',');
+            let start = date[0];
+            let end = date[1];
+            this.setState({ startDate: start, endDate: end , inputValue: (start+ " " + end) } , () => {
+                let val = this.state.startDate + " " + this.state.endDate;
+                if ( this.props.handleChange ) {
+                    this.props.handleChange(val);
+                }
+            });
+
+        } else {
+            
+            if ( dayItem.isDisable ) return;
+            this.setState({startDate:dayItem.date , inputValue: dayItem.date} , () => {
+                if (this.props.handleChange) {
+                    this.props.handleChange(this.state.startDate);
+                }
+            });
+        }
+
+    }
+
+    timeForDatepicker (){
+        this.setState({visibility: true});
+    }
+
+    render() { 
+        let calander_days = (this.state.visibility) ? Core( this.state.currentDate.year , this.state.currentDate.month , this.props ) : [];
+            console.log(calander_days);
+        // let value = "";
+        let BODY_TYPE = null;
+
+        if (this.state.visibility ) {
+
+            // is not ragePicker
+            if ( !this.props.rangePicker ) {
+                // value = this.state.startDate;
+                BODY_TYPE = <Body {...this.props} parentState={this.state} 
+                                    calender={calander_days}  onSelect={this.handleSelectedDay}/>
+            } else {
+                // rage picker here
+                // value = this.state.startDate + " " + this.state.endDate;
+                BODY_TYPE = <RangeBody {...this.props} parentState={this.state} 
+                                    calender={calander_days}  updateRange={this.handleSelectedDay}/>
+            }
+        }
+
+        return (
+            <React.Fragment>
+                <div className="rn-datepicker-wrapper">
+                    <input className={ (this.props.exteraClassForInput !== "") ? this.props.exteraClassForInput : "rn-datepicker-input"} type="text" onClick={this.timeForDatepicker} defaultValue={this.state.inputValue}/>
+                    <div className={( (this.state.visibility) ? ' show ' : ' hide ') + ' rn-datepicker-popover '} ref={this.refrence}>
+                        <div className="rn-datepicker">
+                            <Header {...this.props} parentState={this.state} lang={this.state.lang} nextMonth={this.handleNextMonth} prevMonth={this.handlePrevMonth} />
+                            {BODY_TYPE}
+                        </div>
+                    </div>
+                </div>
+            </React.Fragment>
+        );
+    }
+}
+ 
 
 // Header
 class Header extends Component {
@@ -160,9 +303,9 @@ class Header extends Component {
             <div className="rn-datepicker-header">
                <div className="actions">
                     
-                    <button className="next-month rn-btn" onClick={this.props.nextMonth}>{">"}</button>
+                    <button className={ ( (this.props.customClassIconRightBtn) ? this.props.customClassIconRightBtn :"") + " next-month rn-btn " } onClick={this.props.nextMonth}>{(this.props.customClassIconRightBtn) ? '' : '>'}</button>
                     <div className="month-name">{this.month_name[this_month]}</div>
-                    <button className="prev-month rn-btn" onClick={this.props.prevMonth}>{"<"}</button>
+                    <button className={ ( (this.props.customClassIconLeftBtn) ? this.props.customClassIconLeftBtn :"") + " prev-month rn-btn "} onClick={this.props.prevMonth}>{(this.props.customClassIconLeftBtn) ? '' : '<'}</button>
                     
                     <div className="year-name">{this.props.parentState.currentDate.year}</div>
 
@@ -385,4 +528,6 @@ class RangeBody extends Component {
     }
 }
 
-export default Datepicker;
+export {
+    Calendar , Datepicker
+};
