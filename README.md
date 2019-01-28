@@ -8,13 +8,9 @@ Datepicker and new features will be available soon
 
 
 ### Datepicker:
-![RN-datepicker-datepicker-range](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/datepicker-range.png)
+![RN-datepicker-datepicker-range](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/rn-datepicker.png)
 
-### Calendar:
-![RN-datepicker-calendar](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/calendar.png)
-![RN-datepicker-rangeCalendar](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/calendar-range.png)
-
-
+<hr>
 
 ### Installing:
 
@@ -43,6 +39,7 @@ import 'rezvani-datepicker/public/datepicker.scss';
 import 'rezvani-datepicker/public/calendar.scss';
 
 ```
+<hr>
 
 ### How to use:
 ```React Component in render method:
