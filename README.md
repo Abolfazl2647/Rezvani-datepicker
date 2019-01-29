@@ -12,6 +12,10 @@ Datepicker and new features will be available soon
 
 <hr>
 
+### Online DEMO:
+
+[Click Here !](https://4qv87wjnqw.codesandbox.io/)
+
 ### Installing:
 
 ```
