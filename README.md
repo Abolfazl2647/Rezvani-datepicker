@@ -3,7 +3,10 @@
 [![npm](https://img.shields.io/npm/dt/rezvani-datepicker.svg)](https://www.npmjs.com/package/rezvani-datepicker)
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
-Finaly - Persian Calender and Datepicker For React Js Developers.
+Notice: 
+there is a bug: if you change the options of datepicker o calendar out of the box nothing change.
+it means once datepicker or calendar mounted with your options , changing these options won't take effect.
+but i will fixed this issue as soon as possible.
 
 
 
