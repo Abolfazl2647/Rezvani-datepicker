@@ -1,0 +1,271 @@
+
+/*
+==================================================================================== Element size
+*/
+
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 480px,
+//   md: 720px,
+//   lg: 960px,
+//   xl: 1280px,
+//   xxl:1440px,
+//   hd:1920px,
+// ) !default;
+
+/*    Icons   */
+$yelno-icon-size: 18px;
+
+/*    Radio	  */
+$yelno-radio-btn-size:18px;
+$yelno-inner-radio-btn-size:10px;
+$yelno-radio-btn-border-size:2px;
+
+
+/*     Checkbox	*/
+$yelno-checkbox-border-size: 2px;
+$yelno-checkbox-size:		18px;
+$yelno-switch-checkbox-width-size : 94px;
+$yelno-switch-checkbox-height-size: 20px;
+
+
+/*  	Badges	*/
+$badge-offset:20px;
+$badge-height: 18px;
+$modal-badge-height:30px;
+
+
+/*	    Inputs	*/
+$yelno-input-height:40px;
+$yelno-input-padding:12px;
+
+
+/*      Pagination      */
+$pagination-dir-btn-height:30px;
+$pagination-btn-height:22px;
+$pagination-height:50px;
+
+
+/*  BreadCrumb */
+$yelno-breadcrumb-height:30px;
+
+
+/* TABS */
+$yelno-tabs-height: 30px;
+$yelno-tabs-button-padding:24px;
+
+
+/* Selectors */
+$yelno-select-height:40px;
+$yelno-select-xxl-width:220px;
+
+/* Hintbox */
+$hintbox-padding-round:12px;
+$hinbox-carve-padding:24px;
+
+/*------------------------------------------------------ Aside */
+
+$aside_expanded_width:240px;
+$aside_colapsed_width:125px;
+
+$nav_margin_around: 20px;
+$nav_radius: 10px;
+$nav_icon_height:18px;
+
+$innerNav_width_colapsed: $aside_colapsed_width - ($nav_margin_around * 2);
+$innerNav_width_colapsed_hover: $aside_expanded_width - ($nav_margin_around * 2);
+
+$button_area_height:50px;
+/*------------------------------------------------------ Aside/*/
+/*------------------------------------------------------ Main */
+
+
+
+/*------------------------------------------------------ Main/*/
+/*------------------------------------------------------ Header */
+
+$header-height: 49px;
+$header-notif-size:6px;
+
+
+/*------------------------------------------------------ Header/*/
+/*------------------------------------------------------ Footer */
+/*------------------------------------------------------ Footer/*/
+
+
+/*
+==================================================================================== Color Palette
+*/
+
+
+$Carnation:#F75073;
+$Carnation_tint1:#feeef1;
+$Carnation_tint2:#FDDCE3;
+$Carnation_tint3:#FCB9C7;
+$Carnation_tint4:#FA96AB;
+$Carnation_tint5:#F9738F;
+$Carnation_shadow1:#c6405c;
+$Carnation_shadow2:#943045;
+
+$Dodger_Blue:#1496FF;
+$Dodger_Blue_tint1:#E8F5FF;
+$Dodger_Blue_tint2:#D0EAFF;
+$Dodger_Blue_tint3:#A1D5FF;
+$Dodger_Blue_tint4:#72C0FF;
+$Dodger_Blue_tint5:#43ABFF;
+$Dodger_Blue_shadow1:#1078cc;
+$Dodger_Blue_shadow2:#0C5A99;
+
+$Shark:#26282c;
+$Regent_Gray:#848D98;
+$Casper:#BDCADB;
+$white:#FFFFFF;
+$black:#000000;
+
+$Wild_Sand:#F5F5F5;
+$Alabaster:#F9F9F9;
+$Bright_Turquoise:#10CFC9;
+$Bright_Turquoise_light1:#B7F1EF;
+$Bright_Turquoise_light2:#70E2DF;
+
+$Red_Orange:#FF4438;
+$Red_Orange_tint1:#FFECEB;
+$Red_Orange_tint2:#FFDAD7;
+$Red_Orange_tint3:#FFB4AF;
+$Red_Orange_tint4:#FF8F88;
+$Red_Orange_tint5:#FF6960;
+$Red_Orange_shadow1:#CC362D;
+$Red_Orange_shadow2:#992922;
+
+$Candlelight:#FDC911;
+$yellow-light1: #FFECB5;
+$yellow-light2: #FFDA6A;
+$Caribbean_Green:#00CE7C;
+$Caribbean_Green_light1:#B3F0D8;
+$Caribbean_Green_light2:#66E2B0;
+
+$light-blue-grey: #dee7f2;
+$alice-blue: #F2F5F9;
+$solitude: #eef3fb;
+$rockBlue: #95a3b4;
+$gunPowder: #515156;
+$grey95: #f2f2f2;
+$charcoal: #4a4a4a;
+$whisper: #e6e6e6;
+$grey46: #757575;
+$tomato: #ff5f40;
+
+$shadow-color:$Casper;
+
+/*--------------------------------------------------*//* 
+==================================================================================== TEXT 
+*/
+
+$font_size_small:		 		10px ;
+$font_size_normal:		 		12px ;
+$font_size_large:		 		14px ;
+$font_size_xlarge:              16px ;
+$font_size_extra:		 		18px ;
+$font_size_extra-large:  		20px ;
+$font_size_xextra_large:		32px ;	
+
+/*--------------------------------------------------*//* 
+==================================================================================== Button 
+*/
+
+
+$yelno-btn-xs-width:			30px;
+$yelno-btn-sm-width:			30px;
+$yelno-btn-md-width:			30px;
+$yelno-btn-lg-width:			30px;
+$yelno-btn-xl-width:			30px;
+$yelno-btn-xxl-width:			230px;
+$yelno-btn-hd-width:			30px;
+
+$yelno-btn-cancel-xs-width:		30px;
+$yelno-btn-cancel-sm-width:		30px;
+$yelno-btn-cancel-md-width:		30px;
+$yelno-btn-cancel-lg-width:		30px;
+$yelno-btn-cancel-xl-width:		30px;
+$yelno-btn-cancel-xxl-width:	168px;
+$yelno-btn-cancel-hd-width:		30px;
+
+$yelno-btn-xxl-height:			40px;
+$yelno-btn-xxl-paddingTop:		5px;
+$yelno-btn-xxl-paddingRight:	12px;
+$yelno-btn-xxl-fontSize: 		$font_size_extra;
+/*--------------------------------------------------*//* 
+==================================================================================== Radius 
+*/
+
+$yelno-btn-radius:				5px;
+$yelno-checkbox-btn-radius:		5px;
+$pagination-radius:				5px;
+$yelno-input-radius:			5px;
+$hintbox-radius:				8px;
+
+
+/*--------------------------------------------------*//* 
+==================================================================================== Shadow
+*/
+$shadow-type-1: 0 1px 4px 0 $Casper;
+$shadow-type-2: 0 3px 8px 0 $Casper;
+$shadow-type-3: 0 5px 10px 0 $Casper;
+$shadow-type-4: 0 -3px 18px 0 $Casper;
+/*--------------------------------------------------*//* 
+==================================================================================== height
+*/
+
+$yelo-input-height-large: 50px;
+$yelo-input-height-medium: 40px;
+$yelo-input-height-small: 30px;
+
+/*--------------------------------------------------*//* 
+==================================================================================== switch
+*/
+$yelno-switch-height: 20px;
+$yelno-switch-radius: 1000rem;
+$yelno-switch-paddle-offset: 3px;
+
+/*--------------------------------------------------*//* 
+==================================================================================== checkbox
+*/
+$yelno-checkbox-height: 16px;
+$yelno-duration: .4s;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

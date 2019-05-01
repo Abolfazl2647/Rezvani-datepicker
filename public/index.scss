@@ -1,0 +1,328 @@
+@import './mixins.scss';
+@import './variables.scss';
+
+
+$cell-size: 30px;
+$margin-top: 3px;
+$datepickerPadding: 20px;
+$input-height: 30px;
+$cell-radius:2px;
+
+$Caribbean_Green:#00CE7C;
+$Dodger_Blue:#1496FF;
+$Dodger_Blue_tint1:#E8F5FF;
+$Dodger_Blue_tint2:#D0EAFF;
+$Dodger_Blue_tint3:#A1D5FF;
+$Dodger_Blue_tint4:#72C0FF;
+$Dodger_Blue_tint5:#43ABFF;
+$Dodger_Blue_shadow1:#1078cc;
+$Dodger_Blue_shadow2:#0C5A99;
+
+$Shark:#26282c;
+$Regent_Gray:#9095a7;
+$Casper:#BDCADB;
+$casperlight:#d9dce5;
+$white:#FFFFFF;
+$black:#000000;
+
+.rn-date-wrapper {
+
+    z-index: 0;
+    height: auto;
+    position: relative;
+    box-sizing: border-box;
+    @include border-radius(5px);
+    font-family:"IranSans", Verdana, Geneva, Tahoma, sans-serif;
+
+    &.en {
+        .rn-cell { float: left;}
+        .rn-info, 
+        .rn-datepicker {
+            float: left; 
+            height: 290px;
+            box-sizing: border-box;
+        }
+    }
+
+    &.fa {
+        .rn-cell { float: right;}
+        .rn-info, 
+        .rn-datepicker {
+            float: right;
+            height:  290px;
+            box-sizing: border-box;
+        }
+    }
+
+    &.calendar {
+
+        width: auto ; // 250px
+
+        .rn-info {
+
+            padding: 1em;
+            width: 150px; // 150px 
+            margin: 0;
+            padding: 0;
+            position: relative;
+            background-color: $Dodger_Blue_tint5;
+
+            .dayName {
+
+                margin: 0;
+                width: 100%;
+                color: #ffffff;
+                line-height: 40px;
+                position: absolute;
+                text-align: center;
+                background-color: #1078cc;
+            }
+
+            .center-info {
+
+                @include center-absolute;
+                
+            }
+
+            .text {
+
+                color: #ffffff;
+                margin: 0 0 10px 0;
+                text-align: center;
+                width: 100%;
+
+                &.day { font-size: 45px}
+                &.month { font-size: 25px}
+                &.year { font-size: 12px}
+            }
+        }
+
+        .rn-datepicker {
+
+            width: ($cell-size * 7) + ($datepickerPadding *2); // 250px
+            padding: $datepickerPadding;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            display: block;
+            z-index: 0;
+        }
+    }
+
+    &.datepicker {
+
+        width: ($cell-size * 7) + ($datepickerPadding *2); // 250px
+
+        .rn-info {
+            display: none;
+        }
+
+        .rn-datepicker {
+
+            padding: $datepickerPadding;
+            background-color: #ffffff;
+            top: $input-height + 1px;
+            position: absolute;
+            overflow: hidden;
+            z-index: 100;
+            &.show{display: block;}
+            &.hide{display: none;}
+        }
+    }
+
+    .rn-cell {
+
+        width: $cell-size;
+        height: $cell-size;
+        text-align: center;
+        line-height: $cell-size;
+        @include border-radius($cell-radius);
+    }
+
+    .rn-input-wrapper {
+
+        input {
+            margin: 0;
+            width: 100%;
+            padding: 5px 1em;
+            border: none;
+            outline: none;
+            height: $input-height;
+            box-sizing: border-box;
+            @include box-shadow(0 0 20px 2px #eaeaea);
+        }
+    }
+
+    .rn-datepicker {
+
+        .rn-header {
+
+            float: right;
+            width: 100%;
+            display: block;
+
+            .rn-action-header {
+                
+                height: $cell-size;
+                line-height: $cell-size;
+
+                .icon {
+                    
+                    padding: 0;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    height: $cell-size;
+                    width:  $cell-size;
+                    position: relative;
+                    background-color: #ffffff;
+
+                    &::before , 
+                    &::after  {
+
+                        width: 2px;
+                        height: 10px;
+                        content: '';
+                        position: absolute;
+                        background: #43ABFF;
+                        line-height: $cell-size;
+                    }
+
+                    &.rn-next-month {
+
+                        &::before {
+                            top: 7px;
+                            left: 13px;
+                            @include transform(rotate(-45deg));
+                        }
+
+                        &::after {
+                            left: 13px;
+                            bottom: 7px;
+                            @include transform(rotate(45deg));
+                        }
+                    }
+
+
+                    &.rn-prev-month {
+
+                        &::before {
+                            top: 7px;
+                            left: 13px;
+                            @include transform(rotate(45deg));
+                        }
+
+                        &::after {
+                            left: 13px;
+                            bottom: 7px;
+                            @include transform(rotate(-45deg));
+                        }
+                    }
+                }
+
+                .rn-prev-month {
+
+                    float: left !important;
+                    display: inline-block;
+                }
+
+                .rn-middle-info {
+
+                    color: $Shark;
+                    font-size: 12px;
+                    text-align: center;
+                    display: inline-block;
+                    float: left !important;
+                    width: calc(100% - 60px);
+
+                    span { margin: 0 3px;}
+                }
+
+                .rn-prev-month {
+                    float: left !important;
+                    display: inline-block;
+                }
+            }
+        }
+
+        .rn-main {
+
+            width: 100%;
+            float: right;
+            display: block;
+
+            .rn-week-names {
+
+                font-size: 10px;
+                color: $Casper;
+            }
+
+            .rn-days-wrapper {
+
+                &.forward.fa,
+                &.backward.en {
+                    button.startDate {@include border-radius(0 100px 100px 0)}
+                    button.endDate {@include border-radius(100px 0 0 100px)}
+                }
+
+                &.forward.en ,
+                &.backward.fa{
+                    button.startDate {@include border-radius(100px 0 0 100px)}
+                    button.endDate {@include border-radius(0 100px 100px 0)}
+                }
+
+                button {
+                
+                    border: none;
+                    outline: none;
+                    margin: 1px 0;
+                    cursor: pointer;
+                    @include transition(all ease .2s);
+
+                    &:hover {background-color: #E8F5FF;}
+
+                    &:disabled:not([data-type="prev"]),
+                    &:disabled:not([data-type="next"]),
+                    &.disabled {
+                        color: $casperlight;
+                    }
+
+                    &[data-type="prev"],
+                    &[data-type="next"] {
+                        color: $Regent_Gray;
+                    }
+
+                    &[data-today="true"] {
+                        background-color:$Caribbean_Green;
+                        color: #ffffff;
+                        @include transition(.3s);
+                        @include border-radius(100%)
+                    }
+
+                    &.startDate {
+                        background: #1496FF;
+                        color: #ffffff;
+                    }
+
+                    &.endDate {
+                        background: #1496FF;
+                        color: #ffffff;
+                    }
+
+                    &.rangeSelect {
+                        @include border-radius(0);
+                        background: #1496FF;
+                        color: #ffffff;
+                    }
+
+                    &.selected-date {
+                        border: 1px solid #43ABFF;
+                        background-color: #ffffff;
+                        color: #43ABFF;
+                    }
+
+                }
+            }
+        }
+    }
+}

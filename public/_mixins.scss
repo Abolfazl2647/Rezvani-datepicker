@@ -1,0 +1,203 @@
+/*-----------------------------------------------------*/
+/*--------------         CENTER           -------------*/
+/*-----------------------------------------------------*/
+
+@mixin center-block {
+
+	margin: 0 auto;
+	float:none;
+}
+
+@mixin center-absolute {
+	position: absolute !important;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+}
+
+@mixin center-absolute-hor {
+	position: absolute !important;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+@mixin center-absolute-ver {
+	position: absolute !important;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+/*-------------------------------------------------------*/
+/*---------------       TRANSITION         --------------*/
+/*-------------------------------------------------------*/
+
+@mixin transition($transition...) {
+	transition: $transition;
+	-moz-transition: $transition;
+	-ms-transition: $transition;
+	-o-transition: $transition;
+	-webkit-transition: $transition;
+}
+
+
+/*--------------------------------------------------------*/
+/*----------        Border Radius Effect        ----------*/
+/*--------------------------------------------------------*/
+@mixin border-radius($radius...) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	-o-border-radius: $radius;
+	border-radius: $radius;
+}
+
+	// animation-name: example;
+    // animation-duration: 5s;
+    // animation-timing-function: linear;
+    // animation-delay: 2s;
+    // animation-iteration-count: infinite;
+    // animation-direction: alternate;
+
+@mixin animation($anim...) {
+	-webkit-animation: $anim;
+	-moz-animation: $anim;
+	-o-animation: $anim;
+	animation: $anim; 
+}
+
+/*--------------------------------------------------------*/
+/*----------  		      BOX SHADOW	        ----------*/
+/*--------------------------------------------------------*/
+@mixin box-shadow($radius...) {
+	-webkit-box-shadow: $radius;
+	-moz-box-shadow: $radius;
+	-ms-box-shadow: $radius;
+	-o-box-shadow: $radius;
+	box-shadow: $radius;
+}
+
+/*--------------------------------------------------------*/
+/*----------  		      box-sizing	        ----------*/
+/*--------------------------------------------------------*/
+@mixin box-sizing($box-sizing...) {
+	-moz-box-sizing: $box-sizing;
+	-webkit-box-sizing: $box-sizing;
+	box-sizing: $box-sizing;
+}
+
+/*--------------------------------------------------------*/
+/*----------          Transform Effect          ----------*/
+/*--------------------------------------------------------*/
+
+@mixin transform($data...){
+    transform: $data;
+    -moz-transform: $data;
+    -ms-transform:$data;
+    -o-transform: $data;
+    -webkit-transform: $data;
+}
+
+@mixin transform-origin($data...){
+    transform-origin: $data;
+    -moz-transform-origin: $data;
+    -ms-transform-origin:$data;
+    -o-transform-origin: $data;
+    -webkit-transform-origin: $data;
+}
+
+/*------------------------------------------------------*/
+/*----------          Triangle Shape          ----------*/
+/*------------------------------------------------------*/
+@mixin triangle($direction, $color: currentcolor, $size: 1em) {
+	@if not index(top right bottom left, $direction) {
+		@error "Direction must be either `top`, `right`, `bottom` or `left`.";
+	}
+
+	width: 0;
+	height: 0;
+	content: '';
+	z-index: 2;
+	border-#{opposite-position($direction)}: ($size * 1.5) solid $color;
+
+	$perpendicular-borders: $size solid transparent;
+
+	@if $direction == top or $direction == bottom {
+		border-left:   $perpendicular-borders;
+		border-right:  $perpendicular-borders;
+	} @else if $direction == right or $direction == left {
+		border-bottom: $perpendicular-borders;
+		border-top:    $perpendicular-borders;
+	}
+}
+@mixin triangle_2($direction, $color: currentcolor, $size: 1em) {
+	@if not index(top right bottom left, $direction) {
+		@error "Direction must be either `top`, `right`, `bottom` or `left`.";
+	}
+
+	width: 0;
+	height: 0;
+	content: '';
+	z-index: 2;
+	border-#{opposite-position($direction)}: ($size * .5) solid $color;
+
+	$perpendicular-borders: $size solid transparent;
+
+	@if $direction == top or $direction == bottom {
+		border-left:   $perpendicular-borders;
+		border-right:  $perpendicular-borders;
+	} @else if $direction == right or $direction == left {
+		border-bottom: $perpendicular-borders;
+		border-top:    $perpendicular-borders;
+	}
+}
+@mixin triangle_2_stretch($direction, $color: currentcolor, $size: 1em) {
+	@if not index(top right bottom left, $direction) {
+		@error "Direction must be either `top`, `right`, `bottom` or `left`.";
+	}
+
+	width: 0;
+	height: 0;
+	content: '';
+	z-index: 2;
+	border-#{opposite-position($direction)}: ($size * 2) solid $color;
+
+	$perpendicular-borders: $size solid transparent;
+
+	@if $direction == top or $direction == bottom {
+		border-left:   $perpendicular-borders;
+		border-right:  $perpendicular-borders;
+	} @else if $direction == right or $direction == left {
+		border-bottom: $perpendicular-borders;
+		border-top:    $perpendicular-borders;
+	}
+}
+@mixin triangle3eq($direction, $color: currentcolor, $size: 1em) {
+	@if not index(top right bottom left, $direction) {
+		@error "Direction must be either `top`, `right`, `bottom` or `left`.";
+	}
+
+	width: 0;
+	height: 0;
+	content: '';
+	z-index: 2;
+	border-#{opposite-position($direction)}: ($size) solid $color;
+
+	$perpendicular-borders: $size solid transparent;
+
+	@if $direction == top or $direction == bottom {
+		border-left:   $perpendicular-borders;
+		border-right:  $perpendicular-borders;
+	} @else if $direction == right or $direction == left {
+		border-bottom: $perpendicular-borders;
+		border-top:    $perpendicular-borders;
+	}
+}

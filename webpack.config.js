@@ -1,10 +1,9 @@
 const webpack = require('webpack');
-
 module.exports = {
     devtool:'source-map',
-    entery:'./src/index.js',
+    entry:'./src/index.js',
     output: {
-        path:__dirname + '/lib',
+        path: __dirname + '/dist/',
         filename:'rezvani-datepicker.js',
     },
     module: {
