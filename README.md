@@ -10,7 +10,7 @@
 ### Installing:
 
 ```
-npm install rezvani-datepicker
+npm install rezvani-datepicker --> (there is problem to install rezvani-datepicker with npm but you free to use yarn i'll fixed this problem soon)
 
 yarn add rezvani-datepicker
 
