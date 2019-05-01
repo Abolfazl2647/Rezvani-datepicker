@@ -3,20 +3,9 @@
 [![npm](https://img.shields.io/npm/dt/rezvani-datepicker.svg)](https://www.npmjs.com/package/rezvani-datepicker)
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
-Notice: 
-there is a bug: if you change the options of datepicker o calendar out of the box nothing change.
-it means once datepicker or calendar mounted with your options , changing these options won't take effect.
-but i will fixed this issue as soon as possible.
-
-
 
 ### Datepicker:
 ![RN-datepicker-datepicker-range](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/rn-datepicker.png)
-
-<hr>
-
-### Online DEMO:
-[Click Here !](https://4qv87wjnqw.codesandbox.io/)
 
 ### Installing:
 
