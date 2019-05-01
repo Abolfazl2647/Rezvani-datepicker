@@ -101,6 +101,7 @@ Default values are into `[ ]`
 Name | Values | Description | Sample
 ------------- | ------------- | ------------- |-------------
 **lang** | en, [fa] , 'STRING'  | en --> geregorian and fa --> jalali
+**type** | [datepicker], 'STRING'| you need datepicker or calendar | datepicker - calendar
 **name** | "" , 'STRING'  | name of the datepicker input | datepickerName
 **startDate** | [null], 'STRING' | start date of range date | 1397/02/21 or 2019/04/13
 **disableBeforeDate** | [null], 'STRING'| disable all dates before the given date | 1397/02/21 or 2019/04/13
@@ -111,7 +112,6 @@ Name | Values | Description | Sample
 **rightBtnClass** | [icon], 'STRING'| class name like font awersone or etc | fa fa-chevron-right
 **leftBtnClass** | [icon], 'STRING'| class name like font awersone or etc | fa fa-chevron-left
 **rangePicker** | [false], 'BOOL'| do you need range select | true,false
-**type** | [datepicker], 'STRING'| you need datepicker or calendar | datepicker - calendar
 **info** | [true], 'BOOL'| today information box | true,false
 **disabled** | [false], 'BOOL'| if you need to disable datepicker | true,false
 **disableBeforeToday** | [icon], 'BOOL'| disable all days before today | true,false
