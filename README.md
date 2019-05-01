@@ -7,11 +7,6 @@
 ### Datepicker:
 ![RN-datepicker-datepicker-range](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/rn-datepicker.png)
 
-<hr>
-
-### Online DEMO:
-[Click Here !](https://4qv87wjnqw.codesandbox.io/)
-
 ### Installing:
 
 ```
