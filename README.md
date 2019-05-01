@@ -108,7 +108,6 @@ Name | Values | Description | Sample
 **inputClass**| [null], 'STRING'| css class of datepicker input | "myClass"
 **weekNames** | [null], 'STRING' | default option is [false] - set all days before Today date going to be disable | WEEK_DAYS - WEEK_DAYS_SHORT
 **monthNames** | [null], 'STRING' | default option is [false] - set all days before Today date going to be disable |  MONTHS - MONTHS_SHORT
-
 **rightBtnClass** | [icon], 'STRING'| class name like font awersone or etc | fa fa-chevron-right
 **leftBtnClass** | [icon], 'STRING'| class name like font awersone or etc | fa fa-chevron-left
 **rangePicker** | [false], 'BOOL'| do you need range select | true,false
@@ -118,5 +117,4 @@ Name | Values | Description | Sample
 **disableBeforeToday** | [icon], 'BOOL'| disable all days before today | true,false
 **disableAfterToday** | [icon], 'BOOL'| disable all days after today | true,false
 **daysExtraClass** | [icon], 'STRING'| class name which will apply to all days | "myClass"
-
 **handleChange** | [icon], 'FUNC'| On Select date | callback returns an object with startDate and endDate - chosen date in New Date format and String format
