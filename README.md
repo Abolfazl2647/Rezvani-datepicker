@@ -64,23 +64,25 @@ class App extends Component {
       <div className="App">  
 
         <Datepicker
-            lang={"fa"}
-            disable={false}
-            inputVisible={true}
-            shortNameOfTheWeek={true}
-            shortNameOfTheMonth={false}
-            disableBeforeToday={true}
-            disableAfterToday={false}
-            disableAfterDate={null}
-            disableBeforeDate={null}
-            rangePicker={false}
-            // handleChange={this.exmapleHandle.bind(this)}
-            customClassIconRightBtn={"mdi mdi-chevron-right"}
-            customClassIconLeftBtn={"mdi mdi-chevron-left"}
-            exteraClassForInput={""}
-            exteraClassForDays={""}
-            startDate={""}
-            endDate={""}
+            name: PropTypes.string,
+            startDate: PropTypes.string,
+            endDate: PropTypes.string,
+            disableBeforeDate: PropTypes.string,
+            disableAfterDate: PropTypes.string,
+            inputClass:PropTypes.string,
+            weekNames:PropTypes.string,
+            monthNames:PropTypes.string,
+            rightBtnClass:PropTypes.string,
+            leftBtnClass:PropTypes.string,
+            rangePicker:PropTypes.bool,
+            type: PropTypes.string,
+            info:PropTypes.string,
+            disabled:PropTypes.bool,
+            disableBeforeToday:PropTypes.bool,
+            disableAfterToday: PropTypes.bool,
+            daysExtraClass:PropTypes.string,
+            handleChange: PropTypes.func,
+            lang:PropTypes.string
           /> 
 
       </div>
@@ -108,7 +110,6 @@ Name | Values | Description | Sample
 **inputClass**| [null], 'STRING'| css class of datepicker input | "myClass"
 **weekNames** | [null], 'STRING' | default option is [false] - set all days before Today date going to be disable | WEEK_DAYS - WEEK_DAYS_SHORT
 **monthNames** | [null], 'STRING' | default option is [false] - set all days before Today date going to be disable |  MONTHS - MONTHS_SHORT
-
 **rightBtnClass** | [icon], 'STRING'| class name like font awersone or etc | fa fa-chevron-right
 **leftBtnClass** | [icon], 'STRING'| class name like font awersone or etc | fa fa-chevron-left
 **rangePicker** | [false], 'BOOL'| do you need range select | true,false
@@ -118,5 +119,4 @@ Name | Values | Description | Sample
 **disableBeforeToday** | [icon], 'BOOL'| disable all days before today | true,false
 **disableAfterToday** | [icon], 'BOOL'| disable all days after today | true,false
 **daysExtraClass** | [icon], 'STRING'| class name which will apply to all days | "myClass"
-
 **handleChange** | [icon], 'FUNC'| On Select date | callback returns an object with startDate and endDate - chosen date in New Date format and String format
