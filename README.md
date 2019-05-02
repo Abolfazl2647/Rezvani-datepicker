@@ -54,6 +54,7 @@ class App extends Component {
 
         <Datepicker
             type: PropTypes.string,
+            info:PropTypes.bool,
             name: PropTypes.string,
             lang:PropTypes.string
             startDate: PropTypes.string,
@@ -66,11 +67,10 @@ class App extends Component {
             rightBtnClass:PropTypes.string,
             leftBtnClass:PropTypes.string,
             rangePicker:PropTypes.bool,
-            info:PropTypes.string,
+            daysExtraClass:PropTypes.string,
             disabled:PropTypes.bool,
             disableBeforeToday:PropTypes.bool,
             disableAfterToday: PropTypes.bool,
-            daysExtraClass:PropTypes.string,
             handleChange: PropTypes.func,
           /> 
 

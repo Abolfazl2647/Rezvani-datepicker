@@ -400,7 +400,7 @@ DateWrapper.propTypes = {
     leftBtnClass:PropTypes.string,
     rangePicker:PropTypes.bool,
     type: PropTypes.string,
-    info:PropTypes.string,
+    info:PropTypes.bool,
     disabled:PropTypes.bool,
     disableBeforeToday:PropTypes.bool,
     disableAfterToday: PropTypes.bool,
