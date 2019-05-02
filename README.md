@@ -18,7 +18,7 @@ yarn add rezvani-datepicker
 
 ```
 
-Now add these files to you're html file:
+Now add these files:
 
 ```React Component at the top
 
@@ -105,9 +105,9 @@ Name | Values | Description | Sample
 **rightBtnClass** | [icon], 'STRING'| class name like font awersone or etc | fa fa-chevron-right
 **leftBtnClass** | [icon], 'STRING'| class name like font awersone or etc | fa fa-chevron-left
 **rangePicker** | [false], 'BOOL'| do you need range select | true,false
-**info** | [true], 'BOOL'| today information box | true,false
-**disabled** | [false], 'BOOL'| if you need to disable datepicker | true,false
-**disableBeforeToday** | [icon], 'BOOL'| disable all days before today | true,false
-**disableAfterToday** | [icon], 'BOOL'| disable all days after today | true,false
-**daysExtraClass** | [icon], 'STRING'| class name which will apply to all days | "myClass"
-**handleChange** | [icon], 'FUNC'| On Select date | callback returns an object with startDate and endDate - chosen date in New Date format and String format
+**info** | [true], 'BOOL'| today information blue box | true,false
+**disabled** | [false], 'BOOL'| if you need to disable datepicker (only for calendar) | true,false
+**disableBeforeToday** | [false], 'BOOL'| disable all days before today | true,false
+**disableAfterToday** | [fasle], 'BOOL'| disable all days after today | true,false
+**daysExtraClass** | [""], 'STRING'| class name which will apply to all days | "myClass"
+**handleChange** | [null], 'FUNC'| On Select date | callback returns an object with startDate and endDate - chosen date in New Date format and String format
