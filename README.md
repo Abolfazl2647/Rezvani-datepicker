@@ -18,7 +18,7 @@ yarn add rezvani-datepicker
 
 ```
 
-Now add these files to you'r html file:
+Now add these files to you're html file:
 
 ```React Component at the top
 
