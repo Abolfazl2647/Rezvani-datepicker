@@ -38,7 +38,7 @@ import 'rezvani-datepicker/public/datepicker.scss';
 
 ### How to use:
 ```React Component in render method:
-```You Don't have to use options
+You Don't have to use options
 
 import React, { Component } from 'react';
 import { Calendar , Datepicker } from 'rezvani-datepicker';
