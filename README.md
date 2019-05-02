@@ -37,16 +37,23 @@ import 'rezvani-datepicker/public/datepicker.scss';
 <hr>
 
 ### How to use:
-```React Component in render method:
-
+React Component in render method:
+You Don't have to use options
+```
 import React, { Component } from 'react';
 import { Calendar , Datepicker } from 'rezvani-datepicker';
 import 'rezvani-datepicker/public/datepicker.scss';
 import 'rezvani-datepicker/public/calendar.scss';
 
 class App extends Component {
+  
+  constructor(){
+    super();
+    
+    this.handleChange = this.handleChange.bind(this)
+  }
 
-  exmapleHandle (selectedDate){
+  handleChange (selectedDate){
     console.log(selectedDate);
   }
 
