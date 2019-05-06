@@ -4,7 +4,8 @@
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 Please help me to make the best persian datepicker library for React Js. I need your support! 
-thanks
+thanks.
+REZVANI.FRONTDEV@GMAIL.COM
 
 ### Datepicker:
 ![RN-datepicker-datepicker-range](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/rn-datepicker.png)
