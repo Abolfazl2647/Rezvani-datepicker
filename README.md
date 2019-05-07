@@ -5,7 +5,6 @@
 
 Please help me to make the best persian datepicker library for React Js. I need your support! 
 thanks.
-REZVANI.FRONTDEV@GMAIL.COM
 
 ### Datepicker:
 ![RN-datepicker-datepicker-range](https://raw.githubusercontent.com/Abolfazl2647/rn-datepicker/master/public/rn-datepicker.png)
