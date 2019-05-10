@@ -111,8 +111,8 @@ Name | Values | Description | Sample
 **rightBtnClass** | [icon], 'STRING'| class name like font awersone or etc | fa fa-chevron-right
 **leftBtnClass** | [icon], 'STRING'| class name like font awersone or etc | fa fa-chevron-left
 **rangePicker** | [false], 'BOOL'| do you need range select | true,false
-**info** | [true], 'BOOL'| today information blue box | true,false
-**disabled** | [false], 'BOOL'| if you need to disable datepicker (only for calendar) | true,false
+**info** | [true], 'BOOL'| today information blue box (only for calendar) | true,false
+**disabled** | [false], 'BOOL'| if you need to disable datepicker | true,false
 **disableBeforeToday** | [false], 'BOOL'| disable all days before today | true,false
 **disableAfterToday** | [fasle], 'BOOL'| disable all days after today | true,false
 **daysExtraClass** | [""], 'STRING'| class name which will apply to all days | "myClass"
