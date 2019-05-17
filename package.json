@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Abolfazl2647/rn-datepicker#readme",
   "keywords": [
+    "range-datepicker",
     "datepicker",
     "react",
     "persian-range-datepicker",
