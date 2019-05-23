@@ -1,8 +1,8 @@
 # rezvani-datepicker
 #### Persian And Gregorian Date Picker - ReactJs
+<a href="https://npmjs.org/package/rezvani-datepicker"><img alt="Downloads" src="http://img.shields.io/npm/dm/rezvani-datepicker.svg"></a>
 [![npm](https://img.shields.io/npm/dt/rezvani-datepicker.svg)](https://www.npmjs.com/package/rezvani-datepicker)
 <a href="https://www.npmjs.com/package/rezvani-datepicker"><img alt="npm version" src="https://badge.fury.io/js/rezvani-datepicker.svg"></a>
-<a href="https://npmjs.org/package/rezvani-datepicker"><img alt="Downloads" src="http://img.shields.io/npm/dm/rezvani-datepicker.svg"></a>
 [![Build Status](https://travis-ci.org/mosch/react-avatar-editor.svg?branch=master)](https://travis-ci.org/mosch/react-avatar-editor)
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
