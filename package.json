@@ -1,6 +1,6 @@
 {
   "name": "rezvani-datepicker",
-  "version": "2.0.22",
+  "version": "2.0.23",
   "description": "Persian React Date Picker For Front-End Developers.",
   "main": "./lib/rezvani-datepicker.js",
   "scripts": {
