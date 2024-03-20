@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "@date-io/date-fns": "^3.0.0",
-    "@date-io/date-fns-jalali": "^3.0.0",
+    "@date-io/date-fns-jalali": "^2.14.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "date-fns": "^3.6.0",
+    "date-fns-jalali": "^2.28.0-1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
