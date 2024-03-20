@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Day from "./Day";
-import { onDayClickedType } from "../index";
+import { onDayClickedType } from "../datepicker";
 import { DatepickerContext } from "../context";
 import { DaysWrapperStyle } from "../style";
 

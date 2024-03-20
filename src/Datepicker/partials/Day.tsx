@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { onDayClickedType } from "../index";
+import { onDayClickedType } from "../datepicker";
 import { DatepickerContext } from "../context";
 
 interface DayProps {
