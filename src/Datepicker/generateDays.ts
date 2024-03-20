@@ -1,9 +1,8 @@
-import { RezvaniDatepickerAdapter } from "./context";
-
+import { IUtils } from "@date-io/core/IUtils";
 const maxDaysInPicker = 42;
 
-export function GenerateDatepickerDates(
-  adapter: RezvaniDatepickerAdapter<Date>,
+export default function GenerateDatepickerDates(
+  adapter: IUtils<Date>,
   CurrentDate: Date
 ) {
   const firstDayOfMonth = adapter.startOfMonth(CurrentDate);
@@ -16,7 +15,7 @@ export function GenerateDatepickerDates(
 
   // add some days from prev month
   for (let i = totalPrevMonth; i > totalPrevMonth - dayOfWeek; i--) {
-    daysInMonth.push(adapter.setDate(prevMonth, i));
+    daysInMonth.unshift(adapter.setDate(prevMonth, i));
   }
 
   // add some days from current month
