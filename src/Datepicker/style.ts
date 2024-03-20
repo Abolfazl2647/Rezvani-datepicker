@@ -18,6 +18,7 @@ const buttonStyle = css`
 
 export default styled.div`
   max-width: 260px;
+  box-shadow: 0 0 10px 1px #dedede;
 `;
 
 export const DaysWrapperStyle = styled.div`
@@ -28,7 +29,6 @@ export const DaysWrapperStyle = styled.div`
   grid-gap: 5px;
   padding: 10px;
   border-radius: 3px;
-  box-shadow: 0 0 10px 1px #dedede;
 
   .day {
     ${buttonStyle}
@@ -38,6 +38,8 @@ export const DaysWrapperStyle = styled.div`
 export const DatepickerTimelineStyle = styled.div`
   display: flex;
   width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
   justify-content: space-between;
 
   button {

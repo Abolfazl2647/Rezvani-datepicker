@@ -1,21 +1,14 @@
-import DatepickerTimeline from "./partials/datepickerTimeline";
-import DatepickerActions from "./partials/datepickerActions";
-import DatepickerDays from "./partials/datepickerDays";
-import DatepickerStyle from "./style";
+import Datepicker from "./datepicker";
 
-export type onDayClickedType = (date: Date) => void;
+export default function DatepickerInput() {
+  const handleDay = (date: Date) => {
+    console.log("date", date);
+  };
 
-interface DatepickerProps {
-  slots?: {};
-  onDayClicked: onDayClickedType;
-}
-
-export default function Datepicker({ onDayClicked }: DatepickerProps) {
   return (
-    <DatepickerStyle>
-      <DatepickerTimeline />
-      <DatepickerDays onDayClicked={onDayClicked} />
-      <DatepickerActions />
-    </DatepickerStyle>
+    <div>
+      <input />
+      <Datepicker onDayClicked={handleDay} />
+    </div>
   );
 }
