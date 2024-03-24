@@ -4,7 +4,7 @@ import Datepicker from "./Datepicker";
 
 export default function App() {
   return (
-    <div>
+    <div className="App">
       <DatepickerProvider DateAdapter={DateFnsAdapter}>
         <Datepicker />
       </DatepickerProvider>

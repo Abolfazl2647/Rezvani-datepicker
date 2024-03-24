@@ -1,5 +1,12 @@
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
+import { Theme, css } from "@emotion/react";
+
+const primaryColor = "#3490f4";
+
+interface TextfieldProps extends Theme {
+  endAdornment?: boolean;
+  startAdornment?: boolean;
+}
 
 const buttonStyle = css`
   cursor: pointer;
@@ -9,16 +16,15 @@ const buttonStyle = css`
   align-items: center;
   display: inline-flex;
   justify-content: center;
-  border: 1px solid #3490f4;
-  color: #3490f4;
+  border: 1px solid ${primaryColor};
+  color: ${primaryColor};
   outline: none;
   border-radius: 3px;
   box-sizing: border-box;
 `;
 
 export default styled.div`
-  max-width: 260px;
-  box-shadow: 0 0 10px 1px #dedede;
+  display: inline-flex;
 `;
 
 export const DaysWrapperStyle = styled.div`
@@ -44,5 +50,45 @@ export const DatepickerTimelineStyle = styled.div`
 
   button {
     ${buttonStyle}
+  }
+`;
+
+export const TextfieldWrapperStyle = styled.div`
+  display: inline-block;
+  position: relative;
+  padding: 10px;
+  width: auto;
+  box-sizing: border-box;
+  min-width: 120px;
+  border: 1px solid #eaeaea;
+  padding-inline-end: 30px;
+  padding-inline-start: ${({ startAdornment }: TextfieldProps) =>
+    startAdornment ? "30px" : "10px"};
+
+  input {
+    border: none;
+    outline: none;
+    height: 30px;
+    width: auto;
+    color: ${primaryColor};
+  }
+
+  .end-adornment,
+  .start-adornment {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    color: ${primaryColor};
+    position: absolute;
+  }
+
+  .end-adornment {
+    right: auto;
+  }
+
+  .start-adornment {
+    left: auto;
   }
 `;
