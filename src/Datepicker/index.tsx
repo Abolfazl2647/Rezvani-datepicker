@@ -15,7 +15,6 @@ export default function DatepickerInput() {
 
   // handle Click outSide
   const handleClickoutSide = () => setIsFocuesed(false);
-
   useEffect(() => {
     const clickedOutside = (event: MouseEvent) => {
       const node = event?.target as HTMLElement;

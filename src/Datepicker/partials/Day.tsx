@@ -12,7 +12,6 @@ export default function Day({ onDayClicked, date }: DayProps) {
 
   let className = "day ";
   if (dateAdapter.isSameDay(date, new Date())) {
-    console.log(dateAdapter.isSameDay(date, new Date()));
     className += "today";
   }
 
