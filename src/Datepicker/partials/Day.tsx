@@ -10,8 +10,14 @@ interface DayProps {
 export default function Day({ onDayClicked, date }: DayProps) {
   const { dateAdapter } = useContext(DatepickerContext);
 
+  let className = "day ";
+  if (dateAdapter.isSameDay(date, new Date())) {
+    console.log(dateAdapter.isSameDay(date, new Date()));
+    className += "today";
+  }
+
   return (
-    <button className="day" onClick={() => onDayClicked(date)}>
+    <button className={className} onClick={() => onDayClicked(date)}>
       {dateAdapter.getDate(date)}
     </button>
   );

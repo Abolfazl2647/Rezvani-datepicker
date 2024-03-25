@@ -25,6 +25,16 @@ const buttonStyle = css`
 
 export default styled.div`
   display: inline-flex;
+  position: relative;
+`;
+
+export const PopOverStyle = styled.div`
+  max-width: 260px;
+  top: 50px;
+  left: 0;
+  position: absolute;
+  border-radius: 3px;
+  box-shadow: 0 0 3px 0 #eaeaea;
 `;
 
 export const DaysWrapperStyle = styled.div`
@@ -38,6 +48,14 @@ export const DaysWrapperStyle = styled.div`
 
   .day {
     ${buttonStyle}
+    &:hover {
+      background-color: #eaeaea;
+    }
+
+    &.today {
+      color: white;
+      background-color: #68aaf2;
+    }
   }
 `;
 
@@ -60,6 +78,7 @@ export const TextfieldWrapperStyle = styled.div`
   width: auto;
   box-sizing: border-box;
   min-width: 120px;
+  height: 50px;
   border: 1px solid #eaeaea;
   padding-inline-end: 30px;
   padding-inline-start: ${({ startAdornment }: TextfieldProps) =>

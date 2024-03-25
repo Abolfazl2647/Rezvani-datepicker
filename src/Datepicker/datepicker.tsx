@@ -1,7 +1,7 @@
 import DatepickerTimeline from "./partials/datepickerTimeline";
 import DatepickerActions from "./partials/datepickerActions";
 import DatepickerDays from "./partials/datepickerDays";
-import DatepickerStyle from "./style";
+import { PopOverStyle } from "./style";
 
 export type onDayClickedType = (date: Date) => void;
 
@@ -12,10 +12,10 @@ interface DatepickerProps {
 
 export default function Datepicker({ onDayClicked }: DatepickerProps) {
   return (
-    <DatepickerStyle>
+    <PopOverStyle className="popover-wrapper">
       <DatepickerTimeline />
       <DatepickerDays onDayClicked={onDayClicked} />
       <DatepickerActions />
-    </DatepickerStyle>
+    </PopOverStyle>
   );
 }
