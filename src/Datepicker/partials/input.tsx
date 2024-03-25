@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import SvgCalendarTick from "./CalendarTick";
+import SvgCalendarTick from "./icons/CalendarTick";
 import { TextfieldWrapperStyle } from "../style";
 
 interface DatepickerTextfieldProps {

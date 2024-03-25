@@ -60,14 +60,33 @@ export const DaysWrapperStyle = styled.div`
 `;
 
 export const DatepickerTimelineStyle = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 30px 1fr 30px;
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
   justify-content: space-between;
 
+  .year-month-picker {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
   button {
     ${buttonStyle}
+
+    &.month {
+      min-width: auto;
+      padding: 0 20px;
+    }
+
+    &.year {
+      min-width: auto;
+      padding: 0 20px;
+    }
   }
 `;
 
