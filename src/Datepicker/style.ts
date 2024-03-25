@@ -49,12 +49,13 @@ export const DaysWrapperStyle = styled.div`
   .day {
     ${buttonStyle}
     &:hover {
-      background-color: #eaeaea;
+      color: white;
+      background-color: #68aaf2;
     }
 
     &.today {
-      color: white;
-      background-color: #68aaf2;
+      border-radius: 100%;
+      background-color: #f1f1f1;
     }
   }
 `;
