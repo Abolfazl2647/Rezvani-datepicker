@@ -10,7 +10,7 @@ interface TextfieldProps extends Theme {
 
 const buttonStyle = css`
   cursor: pointer;
-  width: 30px;
+  min-width: 30px;
   height: 30px;
   background: white;
   align-items: center;
@@ -48,14 +48,15 @@ export const DaysWrapperStyle = styled.div`
 
   .day {
     ${buttonStyle}
-    &:hover {
-      color: white;
-      background-color: #68aaf2;
-    }
 
     &.today {
       border-radius: 100%;
       background-color: #f1f1f1;
+    }
+
+    &:hover {
+      color: white;
+      background-color: #68aaf2;
     }
   }
 `;
@@ -63,30 +64,42 @@ export const DaysWrapperStyle = styled.div`
 export const DatepickerTimelineStyle = styled.div`
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 30px 1fr 30px;
+  grid-template-columns: 1fr 35px 35px;
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
   justify-content: space-between;
 
+  button {
+    ${buttonStyle}
+
+    &.prev-month, 
+    &.next-month {
+      max-width: 30px;
+    }
+  }
+
   .year-month-picker {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-  }
+    justify-content: space-between;
 
-  button {
-    ${buttonStyle}
-
-    &.month {
+    button {
       min-width: auto;
-      padding: 0 20px;
-    }
 
-    &.year {
-      min-width: auto;
-      padding: 0 20px;
+      &.month {
+        min-width: auto;
+        padding: 0 30px;
+        margin-inline: 5px;
+      }
+
+      &.year {
+        min-width: auto;
+        padding: 0 20px;
+        max-width: 40px;
+        margin-inline: 5px;
+      }
     }
   }
 `;

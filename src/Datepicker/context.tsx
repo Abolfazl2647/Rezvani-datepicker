@@ -4,7 +4,6 @@ import GenerateDays from "./generateDays";
 
 interface DatepickerProviderProps {
   children: React.ReactNode;
-  locale?: string;
   DateAdapter: new (...args: any) => IUtils<Date>;
 }
 
@@ -21,11 +20,10 @@ export const DatepickerContext = createContext({} as DatepickerContextProps);
 export function DatepickerProvider({
   children,
   DateAdapter,
-  locale,
 }: DatepickerProviderProps) {
   const [date, setDate] = useState(new Date());
 
-  const dateAdapter = new DateAdapter({ locale });
+  const dateAdapter = new DateAdapter();
   console.log("dateAdapter", dateAdapter);
 
   const days = useMemo(() => {
