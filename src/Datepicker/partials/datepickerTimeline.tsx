@@ -7,16 +7,18 @@ import SvgArrowRightMini from "./icons/ArrowRightMini";
 export default function DatepickerTimeline() {
   const { nextMonth, prevMonth, dateAdapter, date } =
     useContext(DatepickerContext);
+
+  const { format } = dateAdapter;
   return (
     <DatepickerTimelineStyle>
-      <button onClick={prevMonth}>
+      <div className="year-month-picker">
+        <button className="month">{format(date, "month")}</button>
+        <button className="year">{format(date, "year")}</button>
+      </div>
+      <button className="prev-month" onClick={prevMonth}>
         <SvgArrowLeftMini />
       </button>
-      <div className="year-month-picker">
-        <button className="month">{dateAdapter.getMonth(date) + 1}</button>
-        <button className="year">{dateAdapter.getYear(date)}</button>
-      </div>
-      <button onClick={nextMonth}>
+      <button className="next-month" onClick={nextMonth}>
         <SvgArrowRightMini />
       </button>
     </DatepickerTimelineStyle>
