@@ -24,11 +24,11 @@ export default function DatepickerTextfield({
   startAdornment,
 }: DatepickerTextfieldProps) {
   const [input, setInput] = useState<string>();
-  const { dateAdapter } = useContext(DatepickerContext);
+  const { dateAdapter, dateFormat } = useContext(DatepickerContext);
 
   useEffect(() => {
     if (value) {
-      const string = dateAdapter.formatByString(value, "yyyy/MM/dd");
+      const string = dateAdapter.formatByString(value, dateFormat);
       setInput(string);
     }
   }, [value]);

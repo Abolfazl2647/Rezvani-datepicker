@@ -15,7 +15,10 @@ export default function App() {
 
   return (
     <div className="App">
-      <DatepickerProvider DateAdapter={DateFnsJalaliAdapter}>
+      <DatepickerProvider
+        datepickerAdapter={DateFnsJalaliAdapter}
+        dateFormat="yyyy/MM/dd"
+      >
         <Datepicker
           onDateSelect={handleSelectDay}
           value={inputDate}
