@@ -6,12 +6,21 @@ import { useState } from "react";
 
 export default function App() {
   const [inputDate, setDate] = useState<Date | null>(null);
-  const handleChange = (date: Date) => setDate(date);
+  const handleSelectDay = (date: Date) => setDate(date);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { target } = e;
+    console.log(target.value);
+  };
 
   return (
     <div className="App">
       <DatepickerProvider DateAdapter={DateFnsJalaliAdapter}>
-        <Datepicker onChange={handleChange} value={inputDate} />
+        <Datepicker
+          onDateSelect={handleSelectDay}
+          value={inputDate}
+          onChange={handleChange}
+        />
       </DatepickerProvider>
     </div>
   );

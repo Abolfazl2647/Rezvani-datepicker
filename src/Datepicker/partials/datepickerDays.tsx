@@ -1,25 +1,21 @@
 import { useContext } from "react";
 import Day from "./day";
-import { onDayClickedType } from "../datepicker";
+import { onDaySelectType } from "./day";
 import { DatepickerContext } from "../context";
 import { DaysWrapperStyle } from "../style";
 
 interface DatepickerDaysProps {
-  onDayClicked: onDayClickedType;
+  onDaySelect: onDaySelectType;
 }
 
-export default function DatepickerDays({ onDayClicked }: DatepickerDaysProps) {
+export default function DatepickerDays({ onDaySelect }: DatepickerDaysProps) {
   const { days } = useContext(DatepickerContext);
 
   return (
     <DaysWrapperStyle className="days-wrapper">
       {days.map((day) => {
         return (
-          <Day
-            key={day.toDateString()}
-            date={day}
-            onDayClicked={onDayClicked}
-          />
+          <Day key={day.toDateString()} date={day} onDaySelect={onDaySelect} />
         );
       })}
     </DaysWrapperStyle>
