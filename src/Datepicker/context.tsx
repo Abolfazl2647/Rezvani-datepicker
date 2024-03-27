@@ -4,13 +4,15 @@ import GenerateDays from "./generateDays";
 
 interface DatepickerProviderProps {
   children: React.ReactNode;
-  DateAdapter: new (...args: any) => IUtils<Date>;
+  dateFormat: string;
+  datepickerAdapter: new (...args: any) => IUtils<Date>;
 }
 
 interface DatepickerContextProps {
   dateAdapter: IUtils<Date>;
   days: Array<Date>;
   date: Date;
+  dateFormat: string;
   nextMonth: () => void;
   prevMonth: () => void;
 }
@@ -19,11 +21,12 @@ export const DatepickerContext = createContext({} as DatepickerContextProps);
 
 export function DatepickerProvider({
   children,
-  DateAdapter,
+  datepickerAdapter,
+  dateFormat,
 }: DatepickerProviderProps) {
   const [date, setDate] = useState(new Date());
 
-  const dateAdapter = new DateAdapter();
+  const dateAdapter = new datepickerAdapter();
   console.log("dateAdapter", dateAdapter);
 
   const days = useMemo(() => {
@@ -43,7 +46,7 @@ export function DatepickerProvider({
 
   return (
     <DatepickerContext.Provider
-      value={{ days, date, dateAdapter, nextMonth, prevMonth }}
+      value={{ days, date, dateAdapter, dateFormat, nextMonth, prevMonth }}
     >
       {children}
     </DatepickerContext.Provider>
