@@ -1,12 +1,16 @@
-import { ReactNode, useContext } from "react";
+import { ReactNode, useState, useContext, useEffect } from "react";
 import SvgCalendarTick from "./icons/CalendarTick";
 import { TextfieldWrapperStyle } from "../style";
 import { DatepickerContext } from "../context";
 
-export type DatepickerTextfieldValue = Date | null;
+export type DatepickerTextfieldValue = Date | null | "";
+export type DatepickerTextfiledonChange = (
+  e: React.ChangeEvent<HTMLInputElement>
+) => void;
 
 interface DatepickerTextfieldProps {
   onClick: () => void;
+  onChange?: DatepickerTextfiledonChange;
   value: DatepickerTextfieldValue;
   endAdornment?: ReactNode;
   startAdornment?: ReactNode;
@@ -14,11 +18,20 @@ interface DatepickerTextfieldProps {
 
 export default function DatepickerTextfield({
   onClick,
-  value,
+  onChange,
+  value = "",
   endAdornment,
   startAdornment,
 }: DatepickerTextfieldProps) {
+  const [input, setInput] = useState<string>();
   const { dateAdapter } = useContext(DatepickerContext);
+
+  useEffect(() => {
+    if (value) {
+      const string = dateAdapter.formatByString(value, "yyyy/MM/dd");
+      setInput(string);
+    }
+  }, [value]);
 
   return (
     <TextfieldWrapperStyle
@@ -30,10 +43,7 @@ export default function DatepickerTextfield({
         <span className="end-adornment">{startAdornment}</span>
       ) : null}
 
-      <input
-        value={value ? dateAdapter.formatByString(value, "yyyy/MM/dd") : ""}
-        onClick={onClick}
-      />
+      <input onChange={onChange} value={input} onClick={onClick} />
 
       {endAdornment ? (
         <span className="end-adornment">{endAdornment}</span>

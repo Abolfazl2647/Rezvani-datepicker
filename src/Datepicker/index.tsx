@@ -1,23 +1,28 @@
 import { useState, useEffect, useRef } from "react";
-import Datepicker from "./datepicker";
+import Datepicker from "./partials/datepickerPlatform";
 import DatepickerTextfield from "./partials/input";
-import { DatepickerTextfieldValue } from "./partials/input";
+import {
+  DatepickerTextfieldValue,
+  DatepickerTextfiledonChange,
+} from "./partials/input";
 import DatepickerStyleWrapper from "./style";
 
 interface DatepickerInputProps {
-  onChange: (date: Date) => void;
+  onChange?: DatepickerTextfiledonChange;
   value: DatepickerTextfieldValue;
+  onDateSelect: (date: Date) => void;
 }
 
 export default function DatepickerInput({
   onChange,
+  onDateSelect,
   value,
 }: DatepickerInputProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocuesed] = useState(false);
 
-  const handleDay = (date: Date) => {
-    if (onChange) onChange(date);
+  const handleDaySelect = (date: Date) => {
+    if (onDateSelect) onDateSelect(date);
   };
 
   const handleFocues = () => setIsFocuesed(true);
@@ -41,8 +46,12 @@ export default function DatepickerInput({
 
   return (
     <DatepickerStyleWrapper className="datepicker-wrapper" ref={ref}>
-      <DatepickerTextfield onClick={handleFocues} value={value} />
-      {isFocused && <Datepicker onDayClicked={handleDay} />}
+      <DatepickerTextfield
+        onChange={onChange}
+        onClick={handleFocues}
+        value={value}
+      />
+      {isFocused && <Datepicker onDaySelect={handleDaySelect} />}
     </DatepickerStyleWrapper>
   );
 }

@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import { onDayClickedType } from "../datepicker";
 import { DatepickerContext } from "../context";
 
+export type onDaySelectType = (date: Date) => void;
+
 interface DayProps {
-  onDayClicked: onDayClickedType;
+  onDaySelect: onDaySelectType;
   date: Date;
 }
 
-export default function Day({ onDayClicked, date }: DayProps) {
+export default function Day({ onDaySelect, date }: DayProps) {
   const { dateAdapter } = useContext(DatepickerContext);
 
   let className = "day ";
@@ -16,7 +17,7 @@ export default function Day({ onDayClicked, date }: DayProps) {
   }
 
   return (
-    <button className={className} onClick={() => onDayClicked(date)}>
+    <button className={className} onClick={() => onDaySelect(date)}>
       {dateAdapter.getDate(date)}
     </button>
   );
