@@ -9,11 +9,8 @@ export type DatepickerTextfiledonChange = (
   e: React.ChangeEvent<HTMLInputElement>
 ) => void;
 
-type Delimiter = "/" | "-";
-
 interface DatepickerTextfieldProps {
   onClick: () => void;
-  delimiter: Delimiter;
   onChange?: DatepickerTextfiledonChange;
   value: DatepickerTextfieldValue;
   name?: string;
@@ -23,26 +20,16 @@ interface DatepickerTextfieldProps {
 
 // I need a parser for input type
 
-function parseMask(string: string, delimiter: Delimiter = "/"): string {
-  const array = string.split(delimiter);
-  const newArray = array.map((part) => {
-    const newString = part.replace(/[mMyYdD]/g, "_");
-    return newString;
-  });
-  return newArray.join(delimiter);
-}
-
 export default function DatepickerTextfield({
   onClick,
   onChange,
   value = "",
   name = "",
-  delimiter,
   endAdornment,
   startAdornment,
 }: DatepickerTextfieldProps) {
   const [input, setInput] = useState<string>();
-  const { dateAdapter, dateFormat } = useContext(DatepickerContext);
+  const { dateAdapter, dateFormat, mask } = useContext(DatepickerContext);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { target } = e;
@@ -68,7 +55,7 @@ export default function DatepickerTextfield({
       ) : null}
 
       <IMaskInput
-        mask={parseMask(dateFormat, delimiter)}
+        mask={mask}
         placeholder={dateFormat}
         value={input}
         onChange={handleChange}
