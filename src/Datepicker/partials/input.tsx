@@ -12,17 +12,17 @@ export type DatepickerTextfiledonChange = (
 interface DatepickerTextfieldProps {
   onClick: () => void;
   onChange?: DatepickerTextfiledonChange;
+  onDateSelect?: (date: Date) => void;
   value: DatepickerTextfieldValue;
   name?: string;
   endAdornment?: ReactNode;
   startAdornment?: ReactNode;
 }
 
-// I need a parser for input type
-
 export default function DatepickerTextfield({
   onClick,
   onChange,
+  onDateSelect,
   value = "",
   name = "",
   endAdornment,
@@ -30,16 +30,21 @@ export default function DatepickerTextfield({
 }: DatepickerTextfieldProps) {
   const [input, setInput] = useState<string>();
   const { dateAdapter, dateFormat, mask } = useContext(DatepickerContext);
+  const { parse, isValid, formatByString } = dateAdapter;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { target } = e;
     setInput(target.value);
+    if (isValid(target.value) && mask.length === target.value.length) {
+      const date = parse(target.value, dateFormat);
+      if (onDateSelect && date) onDateSelect(date);
+    }
     if (onChange) onChange(e);
   };
 
   useEffect(() => {
     if (value) {
-      const string = dateAdapter.formatByString(value, dateFormat);
+      const string = formatByString(value, dateFormat);
       setInput(string);
     }
   }, [value]);

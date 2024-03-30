@@ -16,6 +16,7 @@ interface DatepickerContextProps {
   days: Array<Date>;
   date: Date;
   mask: string;
+  delimiter: string;
   dateFormat: string;
   nextMonth: () => void;
   prevMonth: () => void;
@@ -41,7 +42,7 @@ export function DatepickerProvider({
   const [date, setDate] = useState(new Date());
 
   const dateAdapter = new datepickerAdapter();
-
+  console.log("dateAdapter", dateAdapter);
   const days = useMemo(() => {
     return GenerateDays(dateAdapter, date);
   }, [date]);
@@ -67,6 +68,7 @@ export function DatepickerProvider({
         dateAdapter,
         dateFormat,
         mask,
+        delimiter,
         nextMonth,
         prevMonth,
       }}
