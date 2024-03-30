@@ -16,6 +16,7 @@ interface DatepickerContextProps {
   days: Array<Date>;
   date: Date;
   mask: string;
+  timeLine: Date[];
   delimiter: string;
   dateFormat: string;
   nextMonth: () => void;
@@ -34,6 +35,7 @@ export function parseMask(string: string, delimiter: Delimiter = "/"): string {
   return newArray.join(delimiter);
 }
 
+const maxYears = 70;
 export function DatepickerProvider({
   children,
   datepickerAdapter,
@@ -44,19 +46,28 @@ export function DatepickerProvider({
 
   const dateAdapter = new datepickerAdapter();
   console.log("dateAdapter", dateAdapter);
+  const { addYears, addMonths, getMonth, setMonth } = dateAdapter;
+
+  const timeLine = useMemo(() => {
+    const timeline = [];
+    for (let i = 0; i < maxYears; i++) {
+      timeline.push(addYears(date, -i));
+    }
+    return timeline;
+  }, []);
 
   const days = useMemo(() => {
     return GenerateDays(dateAdapter, date);
   }, [date]);
 
   const nextMonth = () => {
-    const nextMonth = dateAdapter.addMonths(date, 1);
+    const nextMonth = addMonths(date, 1);
     setDate(nextMonth);
   };
 
   const prevMonth = () => {
-    const month = dateAdapter.getMonth(date) - 1;
-    const prevMonth = dateAdapter.setMonth(date, month);
+    const month = getMonth(date) - 1;
+    const prevMonth = setMonth(date, month);
     setDate(prevMonth);
   };
 
@@ -74,6 +85,7 @@ export function DatepickerProvider({
         nextMonth,
         prevMonth,
         setDate,
+        timeLine,
       }}
     >
       {children}
