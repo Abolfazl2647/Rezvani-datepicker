@@ -9,15 +9,29 @@ interface DayProps {
 }
 
 export default function Day({ onDaySelect, date }: DayProps) {
-  const { dateAdapter } = useContext(DatepickerContext);
+  const {
+    dateAdapter,
+    date: pickerDate,
+    setDate,
+  } = useContext(DatepickerContext);
+  const { isSameDay } = dateAdapter;
 
-  let className = "day ";
-  if (dateAdapter.isSameDay(date, new Date())) {
-    className += "today";
+  let className = "day";
+  if (isSameDay(date, new Date())) {
+    className += " today ";
   }
 
+  if (isSameDay(date, pickerDate)) {
+    className += " selected ";
+  }
+
+  const handleSelectDay = () => {
+    setDate(date);
+    onDaySelect(date);
+  };
+
   return (
-    <button className={className} onClick={() => onDaySelect(date)}>
+    <button className={className} onClick={handleSelectDay}>
       {dateAdapter.getDate(date)}
     </button>
   );

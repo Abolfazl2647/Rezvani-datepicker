@@ -29,17 +29,20 @@ export default function DatepickerTextfield({
   startAdornment,
 }: DatepickerTextfieldProps) {
   const [input, setInput] = useState<string>();
-  const { dateAdapter, dateFormat, mask } = useContext(DatepickerContext);
+  const { dateAdapter, dateFormat, mask, setDate } =
+    useContext(DatepickerContext);
   const { parse, isValid, formatByString } = dateAdapter;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { target } = e;
     setInput(target.value);
-    if (isValid(target.value) && mask.length === target.value.length) {
-      const date = parse(target.value, dateFormat);
-      if (onDateSelect && date) onDateSelect(date);
-    }
     if (onChange) onChange(e);
+
+    const date = parse(target.value, dateFormat);
+    if (date && onDateSelect && isValid(date)) {
+      setDate(date);
+      onDateSelect(date);
+    }
   };
 
   useEffect(() => {
