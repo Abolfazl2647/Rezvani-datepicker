@@ -14,9 +14,13 @@ export default function Day({ onDaySelect, date }: DayProps) {
     date: pickerDate,
     setDate,
   } = useContext(DatepickerContext);
-  const { isSameDay } = dateAdapter;
+  const { isSameDay, isSameMonth } = dateAdapter;
 
   let className = "day";
+  if (isSameMonth(date, new Date())) {
+    className += " active-month ";
+  }
+
   if (isSameDay(date, new Date())) {
     className += " today ";
   }
