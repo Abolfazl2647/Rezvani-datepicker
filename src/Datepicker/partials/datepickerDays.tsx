@@ -3,9 +3,11 @@ import Day from "./day";
 import { onDaySelectType } from "./day";
 import { DatepickerContext } from "../context";
 import { DaysWrapperStyle } from "../style";
+import { DatepickerTextfieldValue } from "./input";
 
 interface DatepickerDaysProps {
   onDaySelect: onDaySelectType;
+  value: DatepickerTextfieldValue;
 }
 
 export default function DatepickerDays({ onDaySelect }: DatepickerDaysProps) {

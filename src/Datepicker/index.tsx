@@ -48,7 +48,7 @@ export default function DatepickerInput({
         onClick={handleFocues}
         value={value}
       />
-      {isFocused && <Datepicker onDaySelect={onDateSelect} />}
+      {isFocused && <Datepicker onDaySelect={onDateSelect} value={value} />}
     </DatepickerStyleWrapper>
   );
 }

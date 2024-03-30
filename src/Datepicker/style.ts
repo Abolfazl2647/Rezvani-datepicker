@@ -54,6 +54,11 @@ export const DaysWrapperStyle = styled.div`
       background-color: #f1f1f1;
     }
 
+    &.selected {
+      color: white;
+      background-color: #68aaf2;
+    }
+
     &:hover {
       color: white;
       background-color: #68aaf2;

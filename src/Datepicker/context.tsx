@@ -20,6 +20,7 @@ interface DatepickerContextProps {
   dateFormat: string;
   nextMonth: () => void;
   prevMonth: () => void;
+  setDate: React.Dispatch<React.SetStateAction<Date>>;
 }
 
 export const DatepickerContext = createContext({} as DatepickerContextProps);
@@ -43,6 +44,7 @@ export function DatepickerProvider({
 
   const dateAdapter = new datepickerAdapter();
   console.log("dateAdapter", dateAdapter);
+
   const days = useMemo(() => {
     return GenerateDays(dateAdapter, date);
   }, [date]);
@@ -71,6 +73,7 @@ export function DatepickerProvider({
         delimiter,
         nextMonth,
         prevMonth,
+        setDate,
       }}
     >
       {children}
