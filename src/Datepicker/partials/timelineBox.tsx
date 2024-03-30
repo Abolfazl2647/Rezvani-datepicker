@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import Close from "./icons/close";
 import { DatepickerContext } from "../context";
 import { TimelineStyle } from "../style";
+import Close from "./icons/Close";
 
 interface TimelineProps {
   onClose: () => void;
@@ -39,6 +39,7 @@ function CollabsibleYear({
             return (
               <button
                 className="month"
+                key={format(date, "monthAndYear")}
                 onClick={() => handleSelectTimeline(date)}
               >
                 {format(date, "month")}
