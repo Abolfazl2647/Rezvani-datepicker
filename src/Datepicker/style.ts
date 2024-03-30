@@ -32,6 +32,7 @@ export const PopOverStyle = styled.div`
   max-width: 260px;
   top: 50px;
   left: 0;
+  z-index: 10;
   position: absolute;
   border-radius: 3px;
   box-shadow: 0 0 3px 0 #eaeaea;
@@ -75,7 +76,7 @@ export const DatepickerTimelineStyle = styled.div`
   box-sizing: border-box;
   justify-content: space-between;
 
-  button {
+  button.btn {
     ${buttonStyle}
 
     &.prev-month, 
@@ -104,6 +105,85 @@ export const DatepickerTimelineStyle = styled.div`
         padding: 0 20px;
         max-width: 40px;
         margin-inline: 5px;
+      }
+    }
+  }
+`;
+
+export const TimelineStyle = styled.div`
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f1f1f1;
+  overflow-y: auto;
+
+  .timeline-head {
+    top: 0;
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    min-height: 30px;
+    position: sticky;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 2px;
+    box-sizing: border-box;
+    background-color: white;
+    justify-content: space-between;
+
+    button {
+      cursor: pointer;
+      background: none;
+      border: none;
+      outline: none;
+      color: #68aaf2;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  }
+
+  .year-wrapper {
+    width: 100%;
+    display: block;
+
+    button {
+      cursor: pointer;
+      width: 100%;
+      height: 30px;
+      font-size: 15px;
+      line-height: 30px;
+      text-align: left;
+      padding: 5px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: white;
+      margin-bottom: 2px;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+    }
+
+    .month-wrapper {
+      display: grid;
+      grid-column-gap: 2px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+
+      .month {
+        cursor: pointer;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
       }
     }
   }
