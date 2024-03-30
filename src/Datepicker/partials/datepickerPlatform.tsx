@@ -1,5 +1,5 @@
-import DatepickerTimeline from "./datepickerTimeline";
-import DatepickerActions from "./datepickerActions";
+import DatepickerTimeline from "./timeLine/datepickerTimeline";
+// import DatepickerActions from "./datepickerActions";
 import DatepickerDays from "./datepickerDays";
 import { DatepickerTextfieldValue } from "./input";
 import { onDaySelectType } from "./day";
@@ -14,11 +14,13 @@ export default function DatepickerPlatform({
   onDaySelect,
   value,
 }: DatepickerProps) {
+  // const handleDateSelected = () => {};
+
   return (
     <PopOverStyle className="popover-wrapper">
-      <DatepickerTimeline />
+      <DatepickerTimeline onDaySelect={onDaySelect} />
       <DatepickerDays onDaySelect={onDaySelect} value={value} />
-      <DatepickerActions />
+      {/* <DatepickerActions onDateSelected={handleDateSelected} /> */}
     </PopOverStyle>
   );
 }

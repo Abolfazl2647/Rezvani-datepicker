@@ -45,7 +45,7 @@ export function DatepickerProvider({
   const [date, setDate] = useState(new Date());
 
   const dateAdapter = new datepickerAdapter();
-  console.log("dateAdapter", dateAdapter);
+  // console.log("dateAdapter", dateAdapter);
   const { addYears, addMonths, getMonth, setMonth } = dateAdapter;
 
   const timeLine = useMemo(() => {

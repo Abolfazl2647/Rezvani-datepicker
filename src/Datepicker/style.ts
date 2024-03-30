@@ -19,7 +19,7 @@ const buttonStyle = css`
   border: 1px solid ${primaryColor};
   color: ${primaryColor};
   outline: none;
-  border-radius: 3px;
+  border-radius: 5px;
   box-sizing: border-box;
 `;
 
@@ -34,7 +34,7 @@ export const PopOverStyle = styled.div`
   left: 0;
   z-index: 10;
   position: absolute;
-  border-radius: 3px;
+  border-radius: 5px;
   box-shadow: 0 0 3px 0 #eaeaea;
 `;
 
@@ -45,13 +45,22 @@ export const DaysWrapperStyle = styled.div`
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 5px;
   padding: 10px;
-  border-radius: 3px;
+  border-radius: 5px;
 
   .day {
     ${buttonStyle}
+    border-color: #68aaf2;
+    opacity: 1;
+
+    &.active-month {
+      opacity: 1;
+      border-width: 2px;
+      color: ${primaryColor};
+      border-color: ${primaryColor};
+    }
 
     &.today {
-      border-radius: 100%;
+      border-radius: 5px;
       background-color: #f1f1f1;
     }
 
@@ -72,7 +81,7 @@ export const DatepickerTimelineStyle = styled.div`
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 35px 35px;
   width: 100%;
-  padding: 10px;
+  padding: 10px 5px;
   box-sizing: border-box;
   justify-content: space-between;
 
@@ -137,6 +146,9 @@ export const TimelineStyle = styled.div`
     justify-content: space-between;
 
     button {
+      width: 30px;
+      height: 30px;
+      font-size: 25px;
       cursor: pointer;
       background: none;
       border: none;
@@ -150,40 +162,50 @@ export const TimelineStyle = styled.div`
   }
 
   .year-wrapper {
-    width: 100%;
-    display: block;
+    padding: 5px 5px;
 
-    button {
-      cursor: pointer;
+    .year-row {
       width: 100%;
-      height: 30px;
-      font-size: 15px;
-      line-height: 30px;
-      text-align: left;
-      padding: 5px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      background-color: white;
-      margin-bottom: 2px;
+      display: block;
       box-sizing: border-box;
-      border: none;
-      outline: none;
-    }
 
-    .month-wrapper {
-      display: grid;
-      grid-column-gap: 2px;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(4, 1fr);
+      &.open {
+        border: 2px solid ${primaryColor};
+        border-radius: 5px;
+      }
 
-      .month {
+      button {
         cursor: pointer;
-        text-align: center;
+        width: 100%;
+        height: 30px;
+        font-size: 15px;
+        line-height: 30px;
+        text-align: left;
+        padding: 5px;
         display: flex;
+        justify-content: flex-start;
         align-items: center;
-        justify-content: center;
-        flex-direction: row;
+        background-color: white;
+        margin-bottom: 2px;
+        box-sizing: border-box;
+        border: none;
+        outline: none;
+      }
+
+      .month-wrapper {
+        display: grid;
+        grid-column-gap: 2px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+
+        .month {
+          cursor: pointer;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: row;
+        }
       }
     }
   }
@@ -229,3 +251,5 @@ export const TextfieldWrapperStyle = styled.div`
     left: auto;
   }
 `;
+
+export const DatePickerActionsStyle = styled.div``;
