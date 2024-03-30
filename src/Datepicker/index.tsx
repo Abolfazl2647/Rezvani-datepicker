@@ -21,10 +21,6 @@ export default function DatepickerInput({
   const ref = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocuesed] = useState(false);
 
-  const handleDaySelect = (date: Date) => {
-    if (onDateSelect) onDateSelect(date);
-  };
-
   const handleFocues = () => setIsFocuesed(true);
 
   // handle Click outSide
@@ -48,10 +44,11 @@ export default function DatepickerInput({
     <DatepickerStyleWrapper className="datepicker-wrapper" ref={ref}>
       <DatepickerTextfield
         onChange={onChange}
+        onDateSelect={onDateSelect}
         onClick={handleFocues}
         value={value}
       />
-      {isFocused && <Datepicker onDaySelect={handleDaySelect} />}
+      {isFocused && <Datepicker onDaySelect={onDateSelect} />}
     </DatepickerStyleWrapper>
   );
 }
