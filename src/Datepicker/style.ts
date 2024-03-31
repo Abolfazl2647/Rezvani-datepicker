@@ -26,6 +26,7 @@ const buttonStyle = css`
 export default styled.div`
   display: inline-flex;
   position: relative;
+  font-family: tahoma;
 `;
 
 export const PopOverStyle = styled.div`
@@ -50,11 +51,10 @@ export const DaysWrapperStyle = styled.div`
   .day {
     ${buttonStyle}
     border-color: #68aaf2;
-    opacity: 1;
+    opacity: 0.7;
 
     &.active-month {
       opacity: 1;
-      border-width: 2px;
       color: ${primaryColor};
       border-color: ${primaryColor};
     }
@@ -126,6 +126,7 @@ export const TimelineStyle = styled.div`
   top: 0;
   left: 0;
   padding: 0;
+  z-index: 100;
   box-sizing: border-box;
   background-color: #f1f1f1;
   overflow-y: auto;
@@ -241,6 +242,17 @@ export const TextfieldWrapperStyle = styled.div`
     width: 30px;
     color: ${primaryColor};
     position: absolute;
+
+    button {
+      ${buttonStyle}
+      border: none;
+      font-size: 18px;
+      background: none;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
   }
 
   .end-adornment {
