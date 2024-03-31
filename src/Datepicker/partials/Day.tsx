@@ -17,7 +17,7 @@ export default function Day({ onDaySelect, date }: DayProps) {
   const { isSameDay, isSameMonth } = dateAdapter;
 
   let className = "day";
-  if (isSameMonth(date, new Date())) {
+  if (isSameMonth(date, pickerDate)) {
     className += " active-month ";
   }
 

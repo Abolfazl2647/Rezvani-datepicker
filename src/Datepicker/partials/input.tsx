@@ -67,7 +67,6 @@ export default function DatepickerTextfield({
         placeholder={dateFormat}
         value={input}
         onChange={handleChange}
-        onClick={onClick}
         unmask
         onAccept={(value) => {
           if (onChange)
@@ -85,7 +84,9 @@ export default function DatepickerTextfield({
         <span className="end-adornment">{endAdornment}</span>
       ) : (
         <span className="end-adornment">
-          <SvgCalendarTick />
+          <button onClick={onClick}>
+            <SvgCalendarTick />
+          </button>
         </span>
       )}
     </TextfieldWrapperStyle>
