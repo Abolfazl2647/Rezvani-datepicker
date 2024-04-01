@@ -13,6 +13,8 @@ interface DatepickerInputProps {
   onDateSelect: (date: Date) => void;
 }
 
+// TODO make it for radix
+
 export default function DatepickerInput({
   onChange,
   onDateSelect,
