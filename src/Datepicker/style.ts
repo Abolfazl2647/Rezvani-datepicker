@@ -37,6 +37,7 @@ export const PopOverStyle = styled.div`
   position: absolute;
   border-radius: 5px;
   box-shadow: 0 0 3px 0 #eaeaea;
+  background-color: white;
 `;
 
 export const DaysWrapperStyle = styled.div`
@@ -222,6 +223,7 @@ export const TextfieldWrapperStyle = styled.div`
   height: 50px;
   border: 1px solid #eaeaea;
   padding-inline-end: 30px;
+  border-radius: 10px;
   padding-inline-start: ${({ startAdornment }: TextfieldProps) =>
     startAdornment ? "30px" : "10px"};
 

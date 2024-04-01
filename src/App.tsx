@@ -6,8 +6,8 @@ import { useState } from "react";
 
 export default function App() {
   const [inputDate, setDate] = useState<Date | null>(null);
+
   const handleSelectDay = (date: Date) => {
-    console.log("Valid Date Selected");
     setDate(date);
   };
 
@@ -20,6 +20,8 @@ export default function App() {
       >
         <Datepicker onDateSelect={handleSelectDay} value={inputDate} />
       </DatepickerProvider>
+
+      <p>{inputDate?.toLocaleString()}</p>
     </div>
   );
 }
