@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import Day from "./day";
-import { onDaySelectType } from "./day";
+import Day from "./day1";
+import { onDaySelectType } from "./day1";
 import { DatepickerContext } from "../context";
 import { DaysWrapperStyle } from "../style";
 import { DatepickerTextfieldValue } from "./input";

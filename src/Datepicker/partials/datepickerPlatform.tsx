@@ -2,7 +2,7 @@ import DatepickerTimeline from "./timeLine/datepickerTimeline";
 // import DatepickerActions from "./datepickerActions";
 import DatepickerDays from "./datepickerDays";
 import { DatepickerTextfieldValue } from "./input";
-import { onDaySelectType } from "./day";
+import { onDaySelectType } from "./day1";
 import { PopOverStyle } from "../style";
 
 interface DatepickerProps {
