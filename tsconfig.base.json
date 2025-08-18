@@ -3,13 +3,13 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Node",
-    "jsx": "react-jsx",
+    "resolveJsonModule": true,
     "esModuleInterop": true,
-    "strict": true,
-    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "strict": true,
     "declaration": true,
-    "outDir": "dist"
-  },
-  "include": ["packages", "apps"]
+    "outDir": "dist",
+    "jsx": "react-jsx"
+  }
 }
