@@ -1,48 +1,95 @@
 {
-  "private": true,
-  "name": "rezvani-monorepo",
-  "scripts": {
-    "dev": "pnpm --filter playground dev",
-
-    "build": "pnpm -r build",
-
-    "build:date-picker": "pnpm --filter @rezvani/date-picker build",
-    "build:time-picker": "pnpm --filter @rezvani/time-picker build",
-    "build:playground": "pnpm --filter playground build",
-
-    "lint": "pnpm -r lint",
-    "lint:fix": "pnpm -r lint:fix",
-
-    "lint:date-picker": "pnpm --filter @rezvani/date-picker lint",
-    "lint:time-picker": "pnpm --filter @rezvani/time-picker lint",
-    "lint:playground": "pnpm --filter playground lint",
-
-    "format": "pnpm -r format",
-
-    "format:date-picker": "pnpm --filter @rezvani/date-picker format",
-    "format:time-picker": "pnpm --filter @rezvani/time-picker format",
-    "format:playground": "pnpm --filter playground format"
-  },
-  "workspaces": [
-    "packages/*",
-    "apps/*"
+  "name": "rezvani-datepicker",
+  "version": "0.1.0",
+  "description": "A tree-shakeable, adapter-based React datepicker library",
+  "main": "./dist/index.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
   ],
-  "devDependencies": {
-    "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7",
-    "@typescript-eslint/eslint-plugin": "^8.39.1",
-    "@typescript-eslint/parser": "^8.39.1",
-    "eslint": "^9.33.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.4",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "prettier": "^3.6.2",
-    "tsup": "^8.0.0",
-    "typescript": "^5.6.0"
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./adapters": {
+      "import": "./dist/adapters/index.es.js",
+      "require": "./dist/adapters/index.js",
+      "types": "./dist/adapters/index.d.ts"
+    },
+    "./adapters/native": {
+      "import": "./dist/adapters/native/index.es.js",
+      "require": "./dist/adapters/native/index.js",
+      "types": "./dist/adapters/native/index.d.ts"
+    },
+    "./adapters/dayjs": {
+      "import": "./dist/adapters/dayjs/index.es.js",
+      "require": "./dist/adapters/dayjs/index.js",
+      "types": "./dist/adapters/dayjs/index.d.ts"
+    },
+    "./adapters/date-fns": {
+      "import": "./dist/adapters/date-fns/index.es.js",
+      "require": "./dist/adapters/date-fns/index.js",
+      "types": "./dist/adapters/date-fns/index.d.ts"
+    },
+    "./core": {
+      "import": "./dist/core/index.es.js",
+      "require": "./dist/core/index.js",
+      "types": "./dist/core/index.d.ts"
+    },
+    "./styles": "./dist/styles/index.css"
   },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^19.1.1"
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:watch": "vite build --watch",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "type-check": "tsc --noEmit",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
+    "@types/node": "^20.10.6",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "dayjs": "^1.11.10",
+    "date-fns": "^2.30.0",
+    "eslint": "^8.56.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8",
+    "vitest": "^1.1.0"
+  },
+  "keywords": [
+    "react",
+    "datepicker",
+    "calendar",
+    "date",
+    "adapter",
+    "tree-shakeable"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/Rezvani-datepicker"
   }
 }

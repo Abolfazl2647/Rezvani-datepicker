@@ -1,44 +1,8 @@
-# Node modules
-node_modules/
-**/node_modules/
-
-# Build output
-dist/
-**/dist/
-
-# Vite cache
-.vite/
-.vite_cache/
-
-# pnpm store
-.pnpm-store/
-
-# Logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# OS
+*.lock
+dist/
+node_modules/
 .DS_Store
-Thumbs.db
-
-# Editor
-.vscode/
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-
-# Env files
-.env
 .env.local
-.env.*.local
-
-# TypeScript
-*.tsbuildinfo
-
-# Misc
 coverage/
+.vitest/
