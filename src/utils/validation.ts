@@ -1,8 +1,10 @@
-export function isValidDate(date: any): boolean {
-  if (date instanceof Date) {
-    return !isNaN(date.getTime());
-  }
-  return false;
+import type { DateAdapter } from "../adapters/DateAdapter";
+
+export function isValidDate<TDate>(
+  date: TDate,
+  adapter: DateAdapter<TDate>
+): boolean {
+  return adapter.isValid(date);
 }
 
 export function validateDateRange<TDate>(

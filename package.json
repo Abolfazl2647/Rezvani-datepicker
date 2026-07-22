@@ -35,11 +35,6 @@
       "require": "./dist/adapters/date-fns/index.js",
       "types": "./dist/adapters/date-fns/index.d.ts"
     },
-    "./core": {
-      "import": "./dist/core/index.es.js",
-      "require": "./dist/core/index.js",
-      "types": "./dist/core/index.d.ts"
-    },
     "./styles": "./dist/styles/index.css"
   },
   "sideEffects": [
@@ -47,34 +42,46 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build && tsc && node scripts/copy-styles.mjs",
     "build:watch": "vite build --watch",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
-    "lint": "eslint src/**/*.{ts,tsx}",
+    "lint": "eslint src",
     "type-check": "tsc --noEmit",
     "preview": "vite preview"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "dayjs": "^1.11.0",
+    "date-fns": "^2.30.0"
+  },
+  "peerDependenciesMeta": {
+    "dayjs": {
+      "optional": true
+    },
+    "date-fns": {
+      "optional": true
+    }
   },
   "dependencies": {},
   "devDependencies": {
+    "@eslint/js": "^9.19.0",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
     "@types/node": "^20.10.6",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
-    "@typescript-eslint/eslint-plugin": "^6.16.0",
-    "@typescript-eslint/parser": "^6.16.0",
     "@vitejs/plugin-react": "^4.2.1",
     "dayjs": "^1.11.10",
     "date-fns": "^2.30.0",
-    "eslint": "^8.56.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "eslint": "^9.19.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "globals": "^15.14.0",
+    "jsdom": "^25.0.1",
     "typescript": "^5.3.3",
+    "typescript-eslint": "^8.21.0",
     "vite": "^5.0.8",
     "vitest": "^1.1.0"
   },

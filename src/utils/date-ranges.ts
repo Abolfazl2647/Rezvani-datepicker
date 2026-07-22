@@ -4,19 +4,24 @@ export function getDaysInMonth<TDate>(
   date: TDate,
   adapter: DateAdapter<TDate>
 ): number {
-  const nextMonth = adapter.addMonths(date, 1);
-  const lastDay = adapter.addDays(adapter.startOfMonth(nextMonth), -1);
-  return adapter.getDate(lastDay);
+  return adapter.getDaysInMonth(date);
 }
 
 export function getFirstDayOfMonth<TDate>(
   date: TDate,
-  adapter: DateAdapter<TDate>
+  adapter: DateAdapter<TDate>,
+  firstDayOfWeek: number = 0
 ): number {
   const firstDay = adapter.startOfMonth(date);
-  return adapter.getDay(firstDay);
+  return (adapter.getDay(firstDay) - firstDayOfWeek + 7) % 7;
 }
 
+/**
+ * Boundary-inclusive range check. Uses exact-instant `isEqual` for the boundary
+ * comparison; a future `DateRangePicker` (see DateRange.ts) should switch to
+ * `isSameDay` so a boundary date selected earlier in the day still counts as
+ * "in range" for the rest of that day.
+ */
 export function isDateInRange<TDate>(
   date: TDate,
   start: TDate,
@@ -29,39 +34,52 @@ export function isDateInRange<TDate>(
   );
 }
 
+/**
+ * Returns the visible days for a month view, grouped into weeks (including
+ * leading/trailing days from the adjacent months needed to fill each week),
+ * rotated to start on `firstDayOfWeek`.
+ */
 export function getWeeksInMonth<TDate>(
   date: TDate,
-  adapter: DateAdapter<TDate>
+  adapter: DateAdapter<TDate>,
+  firstDayOfWeek: number = 0
 ): TDate[][] {
-  const daysInMonth = getDaysInMonth(date, adapter);
-  const firstDay = getFirstDayOfMonth(date, adapter);
+  const gridStart = adapter.startOfWeek(adapter.startOfMonth(date), firstDayOfWeek);
+  const gridEnd = adapter.endOfWeek(adapter.endOfMonth(date), firstDayOfWeek);
+
   const weeks: TDate[][] = [];
   let week: TDate[] = [];
+  let cursor = gridStart;
 
-  // Add previous month's days
-  const prevMonth = adapter.addMonths(date, -1);
-  const daysInPrevMonth = getDaysInMonth(prevMonth, adapter);
-  for (let i = daysInPrevMonth - firstDay + 1; i <= daysInPrevMonth; i++) {
-    week.push(adapter.addDays(adapter.startOfMonth(prevMonth), i - 1));
-  }
-
-  // Add current month's days
-  for (let i = 1; i <= daysInMonth; i++) {
-    week.push(adapter.addDays(adapter.startOfMonth(date), i - 1));
+  while (!adapter.isAfter(cursor, gridEnd)) {
+    week.push(cursor);
     if (week.length === 7) {
       weeks.push(week);
       week = [];
     }
+    cursor = adapter.addDays(cursor, 1);
   }
-
-  // Add next month's days
-  const nextMonth = adapter.addMonths(date, 1);
-  let dayCount = 1;
-  while (week.length < 7) {
-    week.push(adapter.addDays(adapter.startOfMonth(nextMonth), dayCount - 1));
-    dayCount++;
+  if (week.length > 0) {
+    weeks.push(week);
   }
-  weeks.push(week);
 
   return weeks;
+}
+
+export interface DateDisabledOptions<TDate> {
+  minDate?: TDate;
+  maxDate?: TDate;
+  disabledDates?: TDate[];
+}
+
+/** Single source of truth for "is this date unselectable" — used by CalendarGrid. */
+export function isDateDisabled<TDate>(
+  date: TDate,
+  adapter: DateAdapter<TDate>,
+  { minDate, maxDate, disabledDates }: DateDisabledOptions<TDate> = {}
+): boolean {
+  if (minDate && adapter.isBefore(date, minDate)) return true;
+  if (maxDate && adapter.isAfter(date, maxDate)) return true;
+  if (disabledDates?.some((d) => adapter.isSameDay(d, date))) return true;
+  return false;
 }

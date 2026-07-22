@@ -38,6 +38,40 @@
   cursor: not-allowed;
 }
 
+.datepicker-input:focus-visible {
+  outline: 2px solid var(--datepicker-primary);
+  outline-offset: 1px;
+}
+
+.datepicker-input-wrapper {
+  position: relative;
+}
+
+.datepicker-clear-btn {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--datepicker-text-light);
+  border-radius: 4px;
+}
+
+.datepicker-clear-btn:hover {
+  color: var(--datepicker-text);
+  background-color: var(--datepicker-hover-bg);
+}
+
+.datepicker-clear-btn:focus-visible {
+  outline: 2px solid var(--datepicker-primary);
+  outline-offset: 1px;
+}
+
 .datepicker-popup {
   position: absolute;
   top: 100%;
@@ -75,6 +109,21 @@
   color: #0056b3;
 }
 
+.datepicker-nav-btn:focus-visible {
+  outline: 2px solid var(--datepicker-primary);
+  outline-offset: 1px;
+  border-radius: 4px;
+}
+
+.datepicker-nav-group {
+  display: flex;
+  align-items: center;
+}
+
+.datepicker-nav-btn-year {
+  font-size: 14px;
+}
+
 .datepicker-month-year {
   background: none;
   border: none;
@@ -89,6 +138,11 @@
 
 .datepicker-month-year:hover {
   background-color: var(--datepicker-hover-bg);
+}
+
+.datepicker-month-year:focus-visible {
+  outline: 2px solid var(--datepicker-primary);
+  outline-offset: 1px;
 }
 
 .datepicker-grid {
@@ -111,9 +165,19 @@
 }
 
 .datepicker-days {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.datepicker-week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 4px;
+}
+
+.datepicker-gridcell {
+  display: contents;
 }
 
 .datepicker-day {
@@ -130,6 +194,20 @@
 .datepicker-day:hover:not(:disabled) {
   background-color: var(--datepicker-hover-bg);
   border-color: var(--datepicker-primary);
+}
+
+.datepicker-day:focus-visible {
+  outline: 2px solid var(--datepicker-primary);
+  outline-offset: 1px;
+}
+
+.datepicker-day.today {
+  border-color: var(--datepicker-primary);
+  font-weight: 600;
+}
+
+.datepicker-day.today.selected {
+  border-color: white;
 }
 
 .datepicker-day.outside-month {
